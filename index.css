@@ -1,0 +1,259 @@
+:root {
+    --primary-color: #202020;
+    --secondary-color: #f4f7fc;
+    --grey: #a6a6a6;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Mulish', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin: 1.6rem 0;
+}
+
+p {
+    font-weight: 400;
+    margin: 1.6rem 0;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3rem;
+    letter-spacing: 1.5px;
+}
+
+h3 {
+    font-size: 2.5rem;
+    letter-spacing: 1.5px;
+}
+
+h4 {
+    font-size: 1.6rem;
+}
+
+span {
+    color: var(--grey);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    margin: 1.6rem 0;
+    color: var(--grey);
+    font-size: 1.6rem;
+    border-bottom: 2px dotted var(--primary-color);
+}
+
+.site-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+img {
+    width:100%;
+    max-width: 100%;
+    height: auto;
+}
+
+hr {
+    margin: 16px 0;
+}
+
+/*navigation*/
+nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav>.menu>a {
+    border-bottom: none;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-left: 24px;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+/*Blog*/
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-top: 50px;
+    grid-gap: 60px;
+}
+
+.blogs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 48px;
+}
+.blogs > .blog {
+   background-color: var(--secondary-color);
+   margin: 24px 0;
+   padding:16px;   
+}
+.blogs > .blog > .thumbnail {
+    object-fit:contain;
+}
+
+.blogs > .blog > .content {
+    margin-top:16px;
+}
+
+/**browse categories*/
+.categories a {
+    display: inline-block;
+    border: none;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    width: fit-content;
+    padding:10px;
+    border-radius:50px;
+    font-size: 1.5rem;
+    margin:5px 5px 5px 0;
+}
+
+.categories a:hover {
+    color:white;
+    background-color: var(--primary-color);
+}
+
+
+.pagination {
+    display: inline-block;
+}
+.pagination .active {
+    border:1px solid var(--primary-color);
+    background-color: var(--secondary-color); 
+}
+
+.pagination a {
+    color: var(--primary-color);
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 0;
+}
+
+/*Footer*/
+footer {
+    background-color: #212124;
+    margin-top: 100px;
+    padding:100px 0;
+}
+footer h3 {
+    color: #fffffc;
+}
+footer, p, span,a{
+    color:#9b9ca1
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+    margin:0 auto;
+    grid-gap:16px;
+    justify-items:end
+}
+
+.footer-top > .right a {
+    display: block;
+}
+
+footer hr {
+    margin: 60px 0;
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.footer-menu ul {
+    padding: 0;
+}
+.footer-menu li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 16px;
+}
+
+.social-icons i {
+    color: var(--secondary-color);
+    font-size: 16px;
+    border:1px solid var(--secondary-color);
+    border-radius: 50%;
+    padding: 8px;
+}
+
+@media only screen and (max-width:768px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .mobile-menu {
+        display: block;
+        font-size: 24px;
+    }
+
+    .menu {
+        position: absolute;
+        background-color: white;
+        width: 100%;
+        top: 100%;
+        z-index: 99;
+        display: none;
+    }
+
+    .menu>a {
+        padding: 32px 0;
+        font-size: 18px;
+        display: block;
+    }
+
+    .show {
+        display: block;
+    }
+
+    /*blogs*/
+    main {
+        grid-template-columns:1fr;
+    }
+    .blogs {
+        grid-template-columns: 1fr;
+    }
+
+    /*Footer*/
+    .footer-top{
+        grid-template-columns: 1fr;
+        justify-items: start;
+    }
+
+    .social-icons {
+        margin-top: 24px;
+    }
+}
