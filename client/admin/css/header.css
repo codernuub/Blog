@@ -1,0 +1,16 @@
+:root {
+  --primary-color: #f380c3;
+  --secondary-color: #fee1e8;
+  --bg-color: #fee1e864;
+  --grey: #a6a6a6;
+}
+
+.up>.upl>.item {
+  margin-left: 10px;
+  font-size:1.4rem;
+  cursor: pointer;
+}
+
+.up>.upl>.power:hover {
+  color: orangered;
+}

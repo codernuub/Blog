@@ -1,6 +1,7 @@
 :root {
-    --primary-color: #202020;
-    --secondary-color: #f4f7fc;
+    --primary-color:#f380c3;
+    --secondary-color: #fee1e8;
+    --bg-color:#fee1e864;
     --grey: #a6a6a6;
 }
 
@@ -13,6 +14,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Mulish', sans-serif;
+    background-color: var(--bg-color);
 }
 
 h1,
@@ -113,7 +115,8 @@ main {
 .blogs > .blog {
    background-color: var(--secondary-color);
    margin: 24px 0;
-   padding:16px;   
+   padding:16px;  
+   border-radius: 10px; 
 }
 .blogs > .blog > .thumbnail {
     object-fit:contain;
@@ -121,6 +124,9 @@ main {
 
 .blogs > .blog > .content {
     margin-top:16px;
+}
+.blogs > .blog > .content > p {
+    color:var(--grey)
 }
 
 /**browse categories*/
@@ -146,7 +152,6 @@ main {
     display: inline-block;
 }
 .pagination .active {
-    border:1px solid var(--primary-color);
     background-color: var(--secondary-color); 
 }
 
@@ -160,12 +165,14 @@ main {
 
 /*Footer*/
 footer {
-    background-color: #212124;
+    /*background-color: #212124;*/
+    background-color: #fee1e8;
     margin-top: 100px;
     padding:100px 0;
 }
 footer h3 {
-    color: #fffffc;
+    /*color: #fffffc;*/
+    color: var(--primary-color);
 }
 footer, p, span,a{
     color:#9b9ca1
@@ -181,10 +188,12 @@ footer, p, span,a{
 
 .footer-top > .right a {
     display: block;
+    border: none;
 }
 
 footer hr {
     margin: 60px 0;
+    background-color: var(--primary-color);
 }
 
 .footer-bottom {
@@ -201,11 +210,14 @@ footer hr {
     display: inline-block;
     margin-right: 16px;
 }
+.footer-menu li a {
+    border: none;
+}
 
 .social-icons i {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-size: 16px;
-    border:1px solid var(--secondary-color);
+    border:1px solid var(--primary-color);
     border-radius: 50%;
     padding: 8px;
 }
@@ -218,19 +230,21 @@ footer hr {
     .mobile-menu {
         display: block;
         font-size: 24px;
+        color: var(--primary-color);
     }
 
     .menu {
         position: absolute;
-        background-color: white;
+        background-color:white;
         width: 100%;
         top: 100%;
         z-index: 99;
         display: none;
+        box-shadow: 1px 1px var(--bg-color);
     }
 
     .menu>a {
-        padding: 32px 0;
+        padding:0;
         font-size: 18px;
         display: block;
     }

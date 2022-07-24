@@ -1,0 +1,50 @@
+/*CSS for all pages of admin*/
+:root {
+  --primary-color: #f380c3;
+  --secondary-color: #fee1e8;
+  --bg-color: #fee1e864;
+  --grey: #a6a6a6;
+}
+
+.lrp>.profile {
+  width: 90%;
+  padding: 5%;
+  text-align: center;
+}
+
+.lrp>.profile>img {
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
+  margin: auto;
+}
+
+.lrp>nav {
+  width: 80%;
+  padding: 2.5% 10%;
+}
+
+.lrp>nav>.nav-sec>ul {
+  list-style: none;
+  padding: 0;
+}
+
+.lrp>nav>.nav-sec>ul>li {
+  margin: 15px 0;
+  color: var(--primary-color);
+}
+
+.lrp>nav>.nav-sec>ul>li:hover {
+  color: #222;
+}
+
+.lrp>nav>.nav-sec>ul>.active>a {
+  color: #222;
+}
+
+.lrp>nav>.nav-sec>h4 {
+  color: var(--grey);
+  font-weight: 400;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
