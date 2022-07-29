@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+  <link rel="stylesheet" href="/public/icofont/icofont.min.css" />
+  <link rel="stylesheet" href="/public/css/font.css" />
+
+  <link rel="stylesheet" href="/public/admin/css/template.css" />
+  <link rel="stylesheet" href="/public/admin/css/header.css" />
+  <link rel="stylesheet" href="/public/admin/css/navigation.css" />
+  <link rel="stylesheet" href="/public/admin/css/users.css" />
+</head>
+
+<body>
+
+  <!--HEADER-->
+  <header class="up">
+
+    <h2 class="upr">Admin Panel</h2>
+
+    <div class="upl">
+      <span class="item power"><i class="icofont-power"></i></span>
+    </div>
+
+  </header>
+
+  <div class="lp">
+    <!--SIDE NAVIGATION-->
+    <div class="lrp">
+
+      <div class="profile">
+        <img src="/public/images/profile.jfif" alt="admin" />
+        <p>Abdullah Khan</p>
+      </div>
+
+      <nav>
+
+        <div class="nav-sec">
+          <ul>
+            <li><i class="icofont-user"></i>&nbsp;<a href="/dashboard/users/profile">Profile</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-sec">
+          <ul>
+            <li><i class="icofont-edit"></i>&nbsp;<a href="/dashboard/blogs/create">Create Blog</a></li>
+            <li><i class="icofont-blogger"></i>&nbsp;<a href="/dashboard/blogs">Blogs</a></li>
+            <li><i class="icofont-list"></i>&nbsp;<a href="/dashboard/categories">Categories</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-sec">
+          <ul>
+            <li><i class="icofont-users-alt-5"></i>&nbsp;<a href="/dashboard/users">Users</a></li>
+          </ul>
+        </div>
+
+      </nav>
+
+    </div>
+    <!--MAIN CONTENT-->
+    <div class="llp">
+
+      <!--MAIN CONTENT HEAD-->
+      <div class="head">
+        <h3>Users</h3>
+        <div class="items">
+          <div class="item">
+            <a href="/dashboard/blogs/create">
+              <i class="icofont-edit"></i>&nbsp;
+              <span>Create User</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!--MAIN CONTENT BODY-->
+      <div class="users">
+
+        <div class="user">
+          <img src="/public/images/profile.jfif" alt="abdullah" />
+          <div class="details">
+            <h3>Abdullah Khan</h3>
+            <p><span class="icofont-user"></span>&nbsp;<span>Codernuub</span></p>
+            <p><span class="icofont-blogger"></span>&nbsp;<span>20 Blogs</span></p>
+          </div>
+          <span class="icofont-gear gear"></span>
+        </div>
+
+        <div class="user">
+          <img src="/public/images/default-profile.jfif" alt="abdullah" />
+          <div class="details">
+            <h3>Daief Ullah Khan</h3>
+            <p><span class="icofont-user"></span>&nbsp;<span>daief203</span></p>
+            <p><span class="icofont-blogger"></span>&nbsp;<span>9 Blogs</span></p>
+          </div>
+          <span class="icofont-gear gear"></span>
+        </div>
+
+        <div class="user">
+          <img src="/public/images/default-profile.jfif" alt="abdullah" />
+          <div class="details">
+            <h3>Dummy User</h3>
+            <p><span class="icofont-user"></span>&nbsp;<span>DummyUserName</span></p>
+            <p><span class="icofont-blogger"></span>&nbsp;<span>0 Blogs</span></p>
+          </div>
+          <span class="icofont-gear gear"></span>
+          <ul class="tools">
+            <li class="edit">
+              <span class="icofont-ui-edit"></span>&nbsp;<span>Edit</span>
+            </li>
+            <li class="eye">
+              <span class="icofont-eye-blocked"></span>&nbsp;<span>Suspend</span>
+            </li>
+            <li class="delete">
+              <span class="icofont-ui-delete"></span>&nbsp;<span>Remove</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+<script defer src="/public/admin/js/users.js"></script>
+
+</html>

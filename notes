@@ -1,6 +1,7 @@
 User Validation
 
--> User should have max 20 character limit
+-> User should have max 15 character limit
+-> Username should have max 12 character limit
 
 Blog Validation
 

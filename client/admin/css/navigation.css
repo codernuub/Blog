@@ -12,6 +12,14 @@
   text-align: center;
 }
 
+.lrp > .profile > p {
+  font-family: 'Square Peg';
+  font-size:35px;
+  font-weight: lighter;
+  margin:0 auto;
+  color: var(--primary-color);
+}
+
 .lrp>.profile>img {
   width: 140px;
   height: 140px;

@@ -1,25 +1,42 @@
-const express = require("express");
-const path = require("path");
+require('dotenv').config(); //parse .env file and add environment variables in process.env
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const app = require('./app');
+const mongoose = require('mongoose');
 
-//serve static files
-app.use("/public", express.static("client"));
+//initiate database connection
+mongoose.connect(process.env.MONGOURI || 'mongodb://127.0.0.1:27017/shopDB', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+    .then((db) => {
+        console.log('Connected to database!');
+    })
+    .catch(err => {
+        console.log(err.name, err.message);
+    });
 
-app.get("/", (req, res) => {
-  const file = path.resolve(path.join("client", "index.html"));
-  return res.status(200).sendFile(file);
+
+//server port config
+const port = process.env.PORT || 5000;
+
+//start server
+app.listen(port, () => console.log(`up and running on port ${port}`));
+
+//handle unexpected errors
+process.on('error', (err) => {
+    console.log(err);
+    console.log(err.name, err.message);
 });
 
-app.get("/dashboard", (req, res) => {
-  const file = path.resolve(path.join("client", "admin", "dashboard.html"));
-  return res.status(200).sendFile(file);
+process.on('uncaughtException', err => {
+    console.log(err);
+    console.log(err.name, err.message);
+    process.exit(1)
 });
 
-app.get("/dashboard/blogs", (req, res) => {
-  const file = path.resolve(path.join("client", "admin", "blogs.html"));
-  return res.status(200).sendFile(file);
+process.on('unhandledRejection', (err) => {
+    console.log(err.name, err.message);
+    console.log(err.stack)
+    //wait for server to finish all request
+    server.close(() => process.exit(1))
 });
-
-app.listen(3000, () => console.log(`UP AND RUNNING ON PORT ${PORT}`));

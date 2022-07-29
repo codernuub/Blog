@@ -11,7 +11,7 @@ html {
   height: 100%;
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
+  font-family: "Poppins";
   display: flex;
   background-color: var(--secondary-color);
   user-select: none;
@@ -81,6 +81,8 @@ a:hover {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background-color: #eee;
+  border-radius: 0 0 10px 0;
 }
 
 .lp>.llp>.head {
@@ -90,6 +92,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   color: var(--primary-color);
+  background-color: #fff;
 }
 
 .lp>.llp>.head>h3 {
