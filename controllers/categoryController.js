@@ -9,7 +9,7 @@ const AppError = require("../utils/appError");
  * @description fetch categories for bloggers/readers
  */
 exports.fetchCategories = catchAsync(async (req, res, next) => {
-  const categories = await CategoryModel.find({ active: true });
+  const categories = await CategoryModel.find({ active: true }).select("title").lean();
 
   return res.status(200).json({
     status: "success",
@@ -46,6 +46,7 @@ exports.fetchAllCategories = catchAsync(async (req, res, next) => {
         _id: 1,
         title: 1,
         blogs: { $size: "$blogs" },
+        active:1,
         createdAt: 1,
       },
     },
@@ -71,7 +72,7 @@ exports.fetchAllCategories = catchAsync(async (req, res, next) => {
  */
 exports.addCategory = catchAsync(async (req, res, next) => {
   const category = await CategoryModel.create({
-    title: req.body.category,
+    title: req.body.title,
     createdAt: Date.now(),
   });
 
@@ -90,7 +91,7 @@ exports.addCategory = catchAsync(async (req, res, next) => {
 exports.updateCategory = catchAsync(async (req, res, next) => {
   await CategoryModel.updateOne(
     { _id: req.params.categoryId },
-    { title: req.body.title }
+    req.body
   );
 
   return res.status(200).json({

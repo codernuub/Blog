@@ -11,7 +11,6 @@ router.post(
 
 router.get(
   "/",
-  authController.authorizeAPI(["admin", "blogger"]),
   categoryController.fetchCategories
 );
 
@@ -21,7 +20,7 @@ router.get(
   categoryController.fetchAllCategories
 );
 
-router.get(
+router.patch(
   "/:categoryId",
   authController.authorizeAPI(["admin"]),
  categoryController.updateCategory
