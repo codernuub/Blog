@@ -6,6 +6,7 @@ const app = express();
 //utility modules
 const AppError = require("./utils/appError");
 //controller modules
+const authController = require("./controllers/authController");
 const globalErrorHandler = require("./controllers/errorController");
 //api routes
 const authRoutes = require("./routes/apis/authRoutes");
@@ -27,6 +28,11 @@ app.get("/", (req, res) => {
 
 app.get("/dashboard", (req, res) => {
   const file = path.resolve(path.join("client", "admin", "dashboard.html"));
+  return res.status(200).sendFile(file);
+});
+
+app.get("/dashboard/login", authController.checkAuth, (req, res) => {
+  const file = path.resolve(path.join("client", "admin", "login.html"));
   return res.status(200).sendFile(file);
 });
 

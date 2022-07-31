@@ -94,6 +94,27 @@ exports.authorizeAPI = (roles) => {
 };
 
 /**
+ * @name authorizeAPI
+ * @description allow only registered users to access the resource
+ */
+exports.checkAuth = async (req, res, next) => {
+  //get jwt token from cookies or headers
+  console.log(req.cookies);
+  const token = req.cookies.token;
+  //if token not available send error resposne
+  if (!token) return next();
+
+  try {
+    //verify user token
+    jwt.verify(token, process.env.TOKEN_SECRET);
+  } catch (err) {
+    return next(); //move to login page
+  }
+  //move to login page
+  return res.status(200).redirect("/dashboard");
+};
+
+/**
  * @name authorizePage
  * @description redirect unauthorized user to login page
  */
