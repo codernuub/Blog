@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     requird: [true, "Please provide user password"],
+    select: false,
+  },
+  blogs: {
+    type: Number,
+    default: 0,
   },
   active: {
     type: Boolean,

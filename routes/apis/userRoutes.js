@@ -17,7 +17,6 @@ router.get(
 
 router.post(
   "/add-admin",
-  authController.authorizeAPI(["admin"]),
   userController.addAdmin
 );
 

@@ -1,7 +1,9 @@
 const UserModel = require("../models/User.Model");
+const BlogModel = require("../models/Blog.Model");
 
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const APIFeatures = require("../utils/APIFeatures");
 
 /**
  * @name addUser
@@ -27,6 +29,9 @@ exports.addUser = catchAsync(async (req, res, next) => {
  * @description add admin in database
  */
 exports.addAdmin = catchAsync(async (req, res, next) => {
+  if (process.env.NODE_ENV !== "development")
+    return next(new AppError("Route not found!", 404));
+
   const user = await UserModel.create({
     name: req.body.name,
     role: "admin",
@@ -48,38 +53,13 @@ exports.addAdmin = catchAsync(async (req, res, next) => {
  * @description fetch list of registered users
  */
 exports.fetchUsers = catchAsync(async (req, res, next) => {
-  const users = await UserModel.aggregate([
-    {
-      $lookup: {
-        from: "blogs",
-        localField: "_id",
-        foreignField: "author",
-        pipeline: [
-          {
-            $project: {
-              _id: 1,
-            },
-          },
-        ],
-        as: "blogs",
-      },
-    },
-    {
-      $project: {
-        _id: 1,
-        name: 1,
-        username: 1,
-        role: 1,
-        blogs: { $size: "$blogs" },
-        createdAt: 1,
-      },
-    },
-    {
-      $sort: {
-        createdAt: -1,
-      },
-    },
-  ]);
+  const features = new APIFeatures(UserModel.find({}), req.query)
+    .filter()
+    .limitFields()
+    .sort()
+    .paginate();
+
+  const users = await features.query.lean();
 
   return res.status(200).json({
     status: "success",
@@ -123,7 +103,9 @@ exports.updateUser = catchAsync(async (req, res, next) => {
     });
   }
 
-  await UserModel.updateOne({ _id: req.params.userId }, req.body);
+  await UserModel.updateOne({ _id: req.params.userId }, req.body, {
+    runValidators:true
+  });
 
   return res.status(200).json({
     status: "success",
@@ -157,7 +139,7 @@ exports.uploadProfile = catchAsync(async (req, res, next) => {
  * @name removeUser
  * @description remove user from database
  */
-exports.removeUser = catchAsync(async (req, res, user) => {
+exports.removeUser = catchAsync(async (req, res, next) => {
   const user = await UserModel.deleteOne({ _id: req.params.userId });
 
   //disable all blogs of user

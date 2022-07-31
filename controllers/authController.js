@@ -12,11 +12,16 @@ const AppError = require("../utils/appError");
 exports.login = catchAsync(async (req, res, next) => {
   //find user with email
   const user = await UserModel.findOne({ username: req.body.username }).select(
-    "role +password"
+    "role password active"
   );
 
   //if user not found send error response
   if (!user) return next(new AppError("User not found!", 404));
+
+  if (!user.active)
+  return next(
+    new AppError("Your account is suspended!. Please contact admin", 400)
+  );
 
   //if password not matched send error response
   if (!user.isPasswordMatched(req.body.password, user.password || ""))
@@ -49,9 +54,8 @@ exports.createAuthenticationToken = catchAsync(async (req, res, next) => {
     .status(200)
     .cookie("token", token, {
       expiresIn: Date.now() + process.env.TOKEN_EXPIRES_IN_MIN * 60 * 1000,
-      maxAge: Date.now() + process.env.TOKEN_EXPIRES_IN_MIN * 60 * 1000,
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === "production",
     })
     .json({
       status: "authorized",

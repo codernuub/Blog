@@ -35,7 +35,7 @@ const blogSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  createdAt: Date.now(),
+  createdAt: Date,
 });
 
 module.exports = new mongoose.model("blog", blogSchema);
