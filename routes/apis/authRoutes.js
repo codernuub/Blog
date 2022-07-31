@@ -8,4 +8,10 @@ router.post(
   authController.createAuthenticationToken
 );
 
+router.patch(
+  "/change-password",
+  authController.authorizeAPI(["admin", "blogger"]),
+  authController.changePassword
+);
+
 module.exports = router;

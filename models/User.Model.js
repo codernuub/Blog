@@ -39,6 +39,7 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  passwordChangedAt:Date,
   createdAt: Date,
 });
 

@@ -19,9 +19,9 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!user) return next(new AppError("User not found!", 404));
 
   if (!user.active)
-  return next(
-    new AppError("Your account is suspended!. Please contact admin", 400)
-  );
+    return next(
+      new AppError("Your account is suspended!. Please contact admin", 400)
+    );
 
   //if password not matched send error response
   if (!user.isPasswordMatched(req.body.password, user.password || ""))
@@ -123,3 +123,30 @@ exports.authorizePage = (roles) => {
     return next();
   };
 };
+
+/**
+ * @name changePassword
+ */
+exports.changePassword = catchAsync(async (req, res, next) => {
+  if (!req.body.newPassword) {
+    return next(new AppError("Please provide new password!", 400));
+  }
+
+  const user = await UserModel.findOne({ _id: req.user.userId }).select(
+    "role password passwordChangedAt"
+  );
+
+  //if password not matched send error response
+  if (!user.isPasswordMatched(req.body.password, user.password || ""))
+    return next(new AppError("Password is incorrect!", 400));
+
+  user.password = req.body.newPassword;
+  user.passwordChangedAt = new Date();
+
+  await user.save({ validateBeforeSave: false });
+
+  return res.status(200).json({
+    status: "success",
+    data: null,
+  });
+});
