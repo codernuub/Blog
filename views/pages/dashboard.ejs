@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+  <link rel="stylesheet" href="/public/icofont/icofont.min.css" />
+  <link rel="stylesheet" href="/public/css/font.css" />
+
+  <link rel="stylesheet" href="/public/admin/css/template.css" />
+  <link rel="stylesheet" href="/public/admin/css/header.css" />
+  <link rel="stylesheet" href="/public/admin/css/navigation.css" />
+</head>
+
+<body>
+
+  <!--HEADER-->
+  <header class="up">
+
+    <h2 class="upr">Admin Panel</h2>
+
+    <div class="upl">
+      <span class="item power logout"><i class="icofont-power"></i></span>
+    </div>
+
+  </header>
+
+  <div class="lp">
+    <!--SIDE NAVIGATION-->
+    <%-include("../partials/navigation.ejs", {user:user})%>
+      <!--MAIN CONTENT-->
+      <div class="llp">
+
+        <div class="nothing">
+          <p>Nothing to show</p>
+        </div>
+
+      </div>
+
+  </div>
+
+</body>
+<script defer src="/public/admin/js/logout.js"></script>
+
+</html>

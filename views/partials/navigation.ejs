@@ -1,0 +1,43 @@
+<div class="lrp">
+
+  <div class="profile">
+    <% if (user.profile) { %>
+      <img src="<%=user.profile%>" alt="admin" />
+      <% }else{%>
+        <img src="/public/images/default-profile.jfif" alt="admin" />
+        <%}%>
+
+          <p>
+            <%=user.name%>
+          </p>
+  </div>
+
+  <nav>
+
+    <div class="nav-sec">
+      <ul>
+        <li><i class="icofont-user"></i>&nbsp;<a href="/dashboard/profile">Profile</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-sec">
+      <ul>
+        <li><i class="icofont-edit"></i>&nbsp;<a href="/dashboard/blogs/create">Create Blog</a></li>
+        <li><i class="icofont-blogger"></i>&nbsp;<a href="/dashboard/blogs">Blogs</a></li>
+        <% if (user.role==="admin" ) { %>
+          <li><i class="icofont-list"></i>&nbsp;<a href="/dashboard/categories">Categories</a></li>
+          <%}%>
+      </ul>
+    </div>
+
+    <% if (user.role==="admin" ) { %>
+      <div class="nav-sec">
+        <ul>
+          <li><i class="icofont-users-alt-5"></i>&nbsp;<a href="/dashboard/users">Users</a></li>
+        </ul>
+      </div>
+      <%}%>
+
+  </nav>
+
+</div>

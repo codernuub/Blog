@@ -20,15 +20,18 @@ app.use(cookieParser());
 
 //serve static files
 app.use("/public", express.static("client"));
+//config views
+app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   const file = path.resolve(path.join("client", "index.html"));
   return res.status(200).sendFile(file);
 });
 
-app.get("/dashboard", (req, res) => {
-  const file = path.resolve(path.join("client", "admin", "dashboard.html"));
-  return res.status(200).sendFile(file);
+app.get("/dashboard", authController.authorizePage(['admin','blogger']), (req, res) => {
+  return res.render("pages/dashboard", {
+    user: req.user,
+  });
 });
 
 app.get("/dashboard/login", authController.checkAuth, (req, res) => {

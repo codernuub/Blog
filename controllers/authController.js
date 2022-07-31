@@ -138,6 +138,7 @@ exports.authorizePage = (roles) => {
 
       if (!req.user) throw { message: "unauthorized" };
     } catch (err) {
+      console.log(err.message);
       return res.redirect("/dashboard/login");
     }
     //move to next function
@@ -171,3 +172,19 @@ exports.changePassword = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+
+/**
+ * @name logout
+ */
+exports.logout = (req, res) => {
+  return res
+    .status(200)
+    .cookie("token", "", {
+      maxAge: 0,
+      httpOnly: true,
+    })
+    .json({
+      status: "success",
+      data: null,
+    });
+};
