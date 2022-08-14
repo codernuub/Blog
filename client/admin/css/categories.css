@@ -12,6 +12,7 @@
 }
 
 .categories>.category {
+  position: relative;
   display: flex;
   width: fit-content;
   padding: 10px;
@@ -21,8 +22,14 @@
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.07), 0 5px 15px 0 rgba(0, 0, 0, 0.07);
 }
 
+.categories>.category >.gear {
+  margin-top:3px;
+  cursor: pointer;
+}
+
 .categories>.block-category {
   opacity: 0.6;
+  transition: all 0.4s;
 }
 
 .categories>.block-category>.head>.title {
@@ -31,7 +38,12 @@
 
 .categories>.category>.head {
   display: flex;
+  flex-direction: column;
   margin-right: 15px;
+}
+
+.categories>.category>.head>span {
+  display: block;
 }
 
 .categories>.category>.head>.title {
@@ -40,53 +52,39 @@
   color: var(--primary-color);
 }
 
-.categories>.category>.head>.info {
+.categories>.category>.head>.blog-info {
   width: fit-content;
-  display: block;
   margin: auto 0;
+  font-size:0.8rem;
+  color:var(--grey);
 }
 
-.categories>.category>.tools {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  padding: 0;
-  margin:auto 0;
-}
-
-.categories>.category>.tools>.edit {
-  margin-right: 15px;
-}
-.categories>.category>.tools>.delete {
-  margin-right: 15px;
-}
-.categories>.category>.tools>.eye {
-  font-size: 1.1rem;
-}
-
-.info {
-  position: relative;
-  cursor: pointer;
-}
-
-.info>.info-tip {
+.tools {
   display: none;
   position: absolute;
-  z-index: 1;
-  left: 100%;
-  border: 50px;
+  z-index: 10;
+  top:40px;
+  left:80%;
+  list-style: none;
+  padding:10px 10px 0 0;
+  margin: 0;
+  border-radius:5px;
   background-color: #fff;
   box-shadow: 1px 2px 10px 2px rgba(0, 0, 0, 0.08);
-  border-radius: 0 10px 10px 10px;
-  white-space: nowrap;
-  width: fit-content;
-  padding: 10px;
-  font-size: 0.9rem;
+}
+.display-tool {
+  display: block;
+}
+.tools > li {
+  display: block;
+  z-index:11;
+  margin:0 0 10px 10px;
+  font-size:0.7rem;
   color: var(--grey);
+  white-space: nowrap;
   cursor: pointer;
 }
 
-.info:hover>.info-tip {
-  display: block;
-  transition: 0.4s all;
+.tools > .delete {
+  color: orangered;
 }

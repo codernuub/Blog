@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/public/icofont/icofont.min.css" />
+    <link rel="stylesheet" href="/public/css/font.css" />
+
+    <link rel="stylesheet" href="/public/admin/css/template.css" />
+    <link rel="stylesheet" href="/public/admin/css/header.css" />
+    <link rel="stylesheet" href="/public/admin/css/navigation.css" />
+    <link rel="stylesheet" href="/public/admin/css/popup.css" />
+    <link rel="stylesheet" href="/public/admin/css/categories.css" />
+  </head>
+
+  <body>
+    <!--HEADER-->
+    <header class="up">
+      <h2 class="upr">Admin Panel</h2>
+
+      <div class="upl">
+        <span class="item power"><i class="icofont-power"></i></span>
+      </div>
+    </header>
+
+    <div class="lp">
+      <!--SIDE NAVIGATION-->
+      <%-include("../partials/navigation.ejs", {user:user})%>
+      <!--MAIN CONTENT-->
+      <div class="llp">
+        <!--MAIN CONTENT HEAD-->
+        <div class="head">
+          <h3>Categories</h3>
+          <div class="items">
+            <div class="item">
+              <a id="create" onclick="openPopup(event)">
+                <i id="create" class="icofont-edit"></i>&nbsp;
+                <span id="create">Create Category</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!--MAIN CONTENT BODY-->
+        <div class="categories"></div>
+      </div>
+    </div>
+    <!--form part-->
+    <div class="backdrop">
+      <div class="popup"></div>
+    </div>
+    <!--form part-->
+  </body>
+
+  <script defer src="/public/admin/js/category/template.js"></script>
+  <script defer src="/public/admin/js/category/categories.js"></script>
+</html>

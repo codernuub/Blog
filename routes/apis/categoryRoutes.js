@@ -28,7 +28,7 @@ router.patch(
 
 router.delete(
   "/:categoryId",
-  authController.authorizeAPI(["admin", "blogger"]),
+  authController.authorizeAPI(["admin"]),
   categoryController.removeCategory
 );
 

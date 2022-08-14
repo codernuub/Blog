@@ -73,6 +73,7 @@ exports.fetchAllCategories = catchAsync(async (req, res, next) => {
 exports.addCategory = catchAsync(async (req, res, next) => {
   const category = await CategoryModel.create({
     title: req.body.title,
+    active:req.body.active,
     createdAt: Date.now(),
   });
 
@@ -120,7 +121,7 @@ exports.removeCategory = catchAsync(async (req, res, next) => {
   const result = await CategoryModel.deleteOne({ _id: req.params.categoryId });
 
   if (!result.deletedCount) {
-    return next(new AppError("Failed to category", 400));
+    return next(new AppError("Failed to delete category", 400));
   }
 
   return res.status(200).json({

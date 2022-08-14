@@ -28,11 +28,15 @@ app.get("/", (req, res) => {
   return res.status(200).sendFile(file);
 });
 
-app.get("/dashboard", authController.authorizePage(['admin','blogger']), (req, res) => {
-  return res.render("pages/dashboard", {
-    user: req.user,
-  });
-});
+app.get(
+  "/dashboard",
+  authController.authorizePage(["admin", "blogger"]),
+  (req, res) => {
+    return res.render("pages/dashboard", {
+      user: req.user,
+    });
+  }
+);
 
 app.get("/dashboard/login", authController.checkAuth, (req, res) => {
   const file = path.resolve(path.join("client", "admin", "login.html"));
@@ -44,10 +48,15 @@ app.get("/dashboard/blogs", (req, res) => {
   return res.status(200).sendFile(file);
 });
 
-app.get("/dashboard/categories", (req, res) => {
-  const file = path.resolve(path.join("client", "admin", "categories.html"));
-  return res.status(200).sendFile(file);
-});
+app.get(
+  "/dashboard/categories",
+  authController.authorizePage(["admin"]),
+  (req, res) => {
+    return res.render("pages/categories", {
+      user: req.user,
+    });
+  }
+);
 
 app.get("/dashboard/users", (req, res) => {
   const file = path.resolve(path.join("client", "admin", "users.html"));

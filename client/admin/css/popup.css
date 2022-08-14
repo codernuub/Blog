@@ -1,0 +1,172 @@
+:root {
+  --primary-color: #f380c3;
+  --secondary-color: #fee1e8;
+  --bg-color: #fee1e864;
+  --grey: #a6a6a6;
+}
+
+.backdrop {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: transparent;
+  transition: all 0.5s;
+}
+
+.open-backdrop {
+  z-index: 2;
+  background-color: rgba(51, 51, 51, 0.096);
+}
+
+.popup {
+  width: 350px;
+  margin: 0 auto;
+  border-radius: 10px;
+  height: fit-content;
+  background-color: #fff;
+  box-shadow: 10px 10px 100px 1px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s;
+  transform: translateY(-100%);
+}
+
+.open-popup {
+  transition: all 0.5s;
+  transform: translateY(50%);
+}
+
+#popup-content>.head {
+  width: 90%;
+  padding: 5% 5% 0 5%;
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  color: var(--primary-color);
+  font-family: "square peg";
+}
+
+#popup-content>.head>h4 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.2em;
+}
+
+#popup-content>.head>i {
+  margin: auto 0;
+  cursor: pointer;
+}
+
+/*update form status*/
+form {
+  width: 90%;
+  padding: 5%;
+}
+
+.checkbox {
+  display: flex;
+  margin-top:8px;
+}
+.checkbox>label {
+  display: block;
+  font-size: 0.8rem;
+  color: grey;
+  color: var(--primary-color);
+}
+
+.input {
+  width: 100%;
+}
+
+.input>label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: grey;
+}
+
+.input>p {
+  margin: 0;
+  color: grey;
+  font-size: 0.9rem;
+}
+
+.input>select {
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid #eee;
+}
+
+.input>input,
+select {
+  display: block;
+  width: 94%;
+  font-size: 0.9rem;
+  padding: 8px 2.5%;
+  border-radius: 5px;
+  border: 2px solid var(--secondary-color);
+  outline-style: none;
+  color: var(--primary-color);
+}
+
+.input>.hide {
+  display: none;
+}
+
+/*setting form style*/
+.settings>.input:nth-child(2),
+.input:nth-child(3) {
+  display: block;
+  width: 95%;
+}
+
+.settings>.input:nth-child(1)>ul {
+  padding: 0;
+  list-style: none;
+}
+
+.settings>.input:nth-child(1)>ul>li {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*setting form style*/
+.input:nth-child(2),
+.input:nth-child(3),
+.input:nth-child(4) {
+  display: inline-block;
+  width: 30%;
+  margin-top: 15px;
+}
+
+.input:nth-child(2),
+.input:nth-child(3) {
+  margin-right: 2.5%;
+}
+
+button {
+  display: block;
+  width: fit-content;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.9rem;
+  color: white;
+  background-color: var(--primary-color);
+  margin-top:10px;
+  margin-left: auto;
+  margin-right: 0;
+  cursor: pointer;
+}
+
+/*status*/
+.status {
+  transform: translateY(-200%);
+}
+
+.status-up {
+  transform: translateY(100%);
+}

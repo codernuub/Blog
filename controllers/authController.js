@@ -12,7 +12,7 @@ const AppError = require("../utils/appError");
 exports.login = catchAsync(async (req, res, next) => {
   //find user with email
   const user = await UserModel.findOne({ username: req.body.username }).select(
-    "role password active"
+    "role +password active"
   );
 
   //if user not found send error response
@@ -24,6 +24,8 @@ exports.login = catchAsync(async (req, res, next) => {
     );
 
   //if password not matched send error response
+  console.log(req.body);
+  console.log(user);
   if (!user.isPasswordMatched(req.body.password, user.password || ""))
     return next(new AppError("Password is incorrect!", 400));
 
