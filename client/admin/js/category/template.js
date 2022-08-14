@@ -44,8 +44,8 @@ function updatePopupTemp({ _id = "", title = "", active = false }) {
           <input type="checkbox" name="active" ${active ? "checked" : ""} />
           <label>Enabled<label>
       </div>
-      <div class="input">
-      <input class="hide" name="_id" value="${_id}" /> 
+      <div class="input hide">
+      <input name="_id" value="${_id}" /> 
       </div>
       <button>Update</button>
   </form>`;
@@ -56,6 +56,8 @@ function deletePopupTemp({ _id = "", title = "" }) {
   return `<form id="delete">
       <div class="input">
          <p style="color:#333">Do you want to delete <strong style='color:#f380c3'>${title}</strong> ?</p>
+      </div>
+      <div class="hide">
          <input class="hide" name="_id" value="${_id}"/>
       </div>
       <button style="background-color:orangered">delete</button>

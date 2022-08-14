@@ -58,10 +58,15 @@ app.get(
   }
 );
 
-app.get("/dashboard/users", (req, res) => {
-  const file = path.resolve(path.join("client", "admin", "users.html"));
-  return res.status(200).sendFile(file);
-});
+app.get(
+  "/dashboard/users",
+  authController.authorizePage(["admin"]),
+  (req, res) => {
+    return res.render("pages/users", {
+      user: req.user,
+    });
+  }
+);
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);

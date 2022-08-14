@@ -24,8 +24,6 @@ exports.login = catchAsync(async (req, res, next) => {
     );
 
   //if password not matched send error response
-  console.log(req.body);
-  console.log(user);
   if (!user.isPasswordMatched(req.body.password, user.password || ""))
     return next(new AppError("Password is incorrect!", 400));
 
@@ -101,7 +99,6 @@ exports.authorizeAPI = (roles) => {
  */
 exports.checkAuth = async (req, res, next) => {
   //get jwt token from cookies or headers
-  console.log(req.cookies);
   const token = req.cookies.token;
   //if token not available send error resposne
   if (!token) return next();
