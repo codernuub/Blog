@@ -149,12 +149,13 @@ exports.authorizePage = (roles) => {
  * @name changePassword
  */
 exports.changePassword = catchAsync(async (req, res, next) => {
-  if (!req.body.newPassword) {
-    return next(new AppError("Please provide new password!", 400));
+
+  if (!req.body.newPassword || !req.body.password) {
+    return next(new AppError("Please provide password!", 400));
   }
 
   const user = await UserModel.findOne({ _id: req.user.userId }).select(
-    "role password passwordChangedAt"
+    "role +password passwordChangedAt"
   );
 
   //if password not matched send error response
