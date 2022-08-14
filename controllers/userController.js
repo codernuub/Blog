@@ -13,6 +13,7 @@ exports.addUser = catchAsync(async (req, res, next) => {
     name: req.body.name,
     username: req.body.username,
     password: req.body.password,
+    active:req.body.active,
     createdAt: Date.now(),
   });
 
@@ -98,7 +99,7 @@ exports.updateUser = catchAsync(async (req, res, next) => {
   if (req.user.role !== "admin") {
     req.params.userId = req.user.userId;
     //remove restricted fields
-    ["role", "active", "createdAt"].forEach((field) => {
+    ["role", "createdAt"].forEach((field) => {
       if (req.body[field]) delete req.body[field];
     });
   }

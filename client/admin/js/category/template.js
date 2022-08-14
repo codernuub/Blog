@@ -78,10 +78,8 @@ function categoryTemp(category) {
   <span class="blog-info">${category.blogs || 0} Blogs published</span>
 </div>
 <span class="icofont-gear gear" onclick="toggleTool(event)"></span>
-<ul class="tools" id=${category._id}>
-  <li class="edit" data="1" id=${
-    category._id
-  } onclick="initEditCategory(event)">
+<ul class="tools" id="${category._id}">
+  <li class="edit" data="1" id="${category._id}" onclick="initEditCategory(event)">
     <span class="icofont-ui-edit" data="0"></span  data="0">&nbsp;<span>Edit</span>
   </li>
   ${isDeletable}

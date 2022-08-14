@@ -67,8 +67,9 @@ form {
 
 .checkbox {
   display: flex;
-  margin-top:8px;
+  margin-top: 8px;
 }
+
 .checkbox>label {
   display: block;
   font-size: 0.8rem;
@@ -112,39 +113,8 @@ select {
   color: var(--primary-color);
 }
 
-.input>.hide {
+.hide {
   display: none;
-}
-
-/*setting form style*/
-.settings>.input:nth-child(2),
-.input:nth-child(3) {
-  display: block;
-  width: 95%;
-}
-
-.settings>.input:nth-child(1)>ul {
-  padding: 0;
-  list-style: none;
-}
-
-.settings>.input:nth-child(1)>ul>li {
-  display: flex;
-  justify-content: space-between;
-}
-
-/*setting form style*/
-.input:nth-child(2),
-.input:nth-child(3),
-.input:nth-child(4) {
-  display: inline-block;
-  width: 30%;
-  margin-top: 15px;
-}
-
-.input:nth-child(2),
-.input:nth-child(3) {
-  margin-right: 2.5%;
 }
 
 button {
@@ -156,7 +126,7 @@ button {
   font-size: 0.9rem;
   color: white;
   background-color: var(--primary-color);
-  margin-top:10px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: 0;
   cursor: pointer;

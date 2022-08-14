@@ -1,9 +1,0 @@
-User Validation
-
--> User should have max 15 character limit
--> Username should have max 12 character limit
-
-Blog Validation
-
--> Title must not include &,/,? characters that disturb url format
--> Blog summary should have 200 character limit
