@@ -1,0 +1,167 @@
+:root {
+  --primary-color: #f380c3;
+  --secondary-color: #fee1e8;
+  --bg-color: #fee1e864;
+  --grey: #a6a6a6;
+}
+
+.blog-form-container {
+  width: 98%;
+  padding: 1%;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+.blog-form-container::-webkit-scrollbar {
+  width: 4px !important;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.blog-form-container::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+
+.blog-form-container>form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 141%;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+select {
+  width: 98%;
+  padding: 1%;
+  border-radius: 5px;
+  font-size: 0.8em;
+  border: transparent;
+  outline: none;
+}
+
+.error {
+  border: 1px solid orangered;
+}
+
+textarea {
+  outline: none;
+  font-family: "Poppins";
+  font-size: .8rem;
+}
+
+input:focus {
+  border: transparent;
+}
+
+form>.blog-info {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+form>.blog-info>.thumbnail {
+  width: 400px;
+}
+
+form>.blog-info>.thumbnail>img {
+  width: 100%;
+  height: 200px;
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+}
+
+form>.blog-info>.thumbnail>input {
+  margin-top: 10px;
+  padding: 10px 5px;
+}
+
+form>.blog-info>.meta-info {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+form>.blog-info>.meta-info>.grid-1 {
+  display: flex;
+}
+
+form>.blog-info>.meta-info>.grid-1>input,
+select {
+  width: 95%;
+  padding: 1.5%;
+  margin-left: 15px;
+  height: fit-content;
+}
+
+form>.blog-info>.meta-info>.grid-2:nth-child(2) {
+  flex: 1;
+}
+
+form>.blog-info>.meta-info>.grid-2 {
+  margin: 15px 0 0 15px;
+  padding: 10px;
+  border: transparent;
+  border-radius: 5px;
+}
+
+.blog-form-container>form>.editor-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 15px 0;
+  padding: 0;
+  height: fit-content;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.blog-form-container>form>.editor-container>.ql-toolbar {
+  padding: 10px 5px;
+  border: transparent;
+  border-bottom: 1px solid #eee;
+}
+
+.blog-form-container>form>.editor-container>#editor {
+  height: 540px;
+  padding: 5px;
+  border: transparent;
+}
+
+.blog-form-container>form>.editor-container>#editor>.ql-editor::-webkit-scrollbar {
+  width: 4px !important;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.blog-form-container>form>.editor-container>#editor>.ql-editor::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+
+.blog-form-container>form>.save-btn {
+  display: flex;
+  justify-content: right;
+  margin: 0;
+}
+
+.blog-form-container>form>.save-btn>button {
+  display: flex;
+  width: fit-content;
+  padding: 8px 10px;
+  margin-left: 10px;
+  white-space: nowrap;
+  background-color: #f380c3;
+  color: white;
+  border: transparent;
+  border-radius: 5px;
+}
+
+
+.blog-form-container>form>.save-btn>button:hover {
+  opacity: 0.8;
+}

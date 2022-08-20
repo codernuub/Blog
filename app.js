@@ -48,6 +48,11 @@ app.get("/dashboard/blogs", (req, res) => {
   return res.status(200).sendFile(file);
 });
 
+app.get("/dashboard/blogs/create", (req, res) => {
+  const file = path.resolve(path.join("client", "admin", "blogform.html"));
+  return res.status(200).sendFile(file);
+});
+
 app.get(
   "/dashboard/categories",
   authController.authorizePage(["admin"]),
