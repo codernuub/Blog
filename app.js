@@ -12,6 +12,7 @@ const globalErrorHandler = require("./controllers/errorController");
 const authRoutes = require("./routes/apis/authRoutes");
 const userRoutes = require("./routes/apis/userRoutes");
 const categoryRoutes = require("./routes/apis/categoryRoutes");
+const blogRoutes = require("./routes/apis/blogRoutes");
 
 //parse body object
 app.use(express.json());
@@ -76,6 +77,7 @@ app.get(
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/categories", categoryRoutes);
+app.use("/api/v1/blogs", blogRoutes);
 
 //Handle unhandled routes
 app.all("*", (req, res, next) => {

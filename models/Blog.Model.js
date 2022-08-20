@@ -5,6 +5,7 @@ const blogSchema = mongoose.Schema({
     type: String,
     required: [true, "Please provide blog title"],
     max: [35, "Maximum title length is 35 characters"],
+    trim: true,
   },
   slug: {
     type: String,
@@ -36,6 +37,12 @@ const blogSchema = mongoose.Schema({
     default: false,
   },
   createdAt: Date,
+});
+
+blogSchema.pre("save", function (next) {
+  if (!this.title) return next();
+  this.slug = this.title.replace(/["&/"]/g, "");
+  return next();
 });
 
 module.exports = new mongoose.model("blog", blogSchema);
