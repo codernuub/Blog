@@ -10,6 +10,7 @@ exports.createBlog = catchAsync(async (req, res, next) => {
   }
 
   const blog = await BlogModel.create({
+    thumbnail: req.body.thumbnail,
     title: req.body.title,
     description: req.body.description,
     content: req.body.content,
@@ -58,6 +59,21 @@ exports.fetchBlogs = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.fetchBlog = catchAsync(async (req, res, next) => {
+  const blog = await BlogModel.findOne({
+    _id: req.params.blogId
+  }).lean();
+
+  if (!blog) return next(new AppError("Blog not found!"));
+
+  return res.status(200).json({
+    status: "success",
+    data: {
+      blog: blog,
+    },
+  });
+});
+
 exports.updateBlog = catchAsync(async (req, res, next) => {
   //remove restricted fields
   ["block"].forEach((field) => {
@@ -68,10 +84,7 @@ exports.updateBlog = catchAsync(async (req, res, next) => {
     req.body["slug"] = req.body.title.replace(/["&/"]/g, "");
   }
 
-  await BlogModel.updateOne(
-    { _id: req.params.blogId, author: req.user.userId },
-    req.body
-  );
+  await BlogModel.updateOne({ _id: req.params.blogId }, req.body);
 
   return res.status(200).json({
     status: "success",

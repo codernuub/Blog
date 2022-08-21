@@ -19,7 +19,7 @@
 }
 
 .unpublished {
-  color: grey;
+  color: rgb(199, 197, 197)
 }
 
 .blogs::-webkit-scrollbar {
@@ -31,6 +31,10 @@
 .blogs::-webkit-scrollbar-thumb {
   background-color: var(--primary-color);
   border-radius: 10px;
+}
+
+.blogs > .block-blog {
+  opacity:0.6;
 }
 
 .blogs>.blog {
@@ -60,6 +64,7 @@
   border-radius:5px;
   font-size: 1.1rem;
 }
+
 .blogs>.blog>.gear>i{
   margin: auto;
 }
@@ -128,10 +133,11 @@
 }
 
 .tools {
+  display: none;
   position: absolute;
   z-index: 10;
-  top:10px;
-  left:105%;
+  top:50px;
+  left:75%;
   list-style: none;
   padding:10px 10px 0 0;
   margin: 0;
@@ -139,13 +145,28 @@
   background-color: #fff;
   box-shadow: 1px 2px 10px 2px rgba(0, 0, 0, 0.08);
 }
-.tools > li {
+
+.display-tool {
   display: block;
+}
+
+.tools > li {
+  width:80px;
+  display: flex;
+  justify-content: flex-start;
   padding:0 0 10px 10px;
   font-size:0.7rem;
   color: var(--grey);
   white-space: nowrap;
+  cursor: pointer;
 }
+
+.tools > li > span:nth-child(1) {
+  width:15px;
+  font-size:0.7rem;
+  margin: auto 0;
+}
+
 .tools > .delete {
   color: orangered;
 }

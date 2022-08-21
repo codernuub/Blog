@@ -15,6 +15,12 @@ router.get(
   blogController.fetchBlogs
 );
 
+router.get(
+  "/:blogId",
+  authController.authorizeAPI(["admin", "blogger"]),
+  blogController.fetchBlog
+);
+
 router.patch(
   "/:blogId",
   authController.authorizeAPI(["admin", "blogger"]),

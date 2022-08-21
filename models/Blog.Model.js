@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const blogSchema = mongoose.Schema({
+  thumbnail: String,
   title: {
     type: String,
     required: [true, "Please provide blog title"],
@@ -28,6 +29,7 @@ const blogSchema = mongoose.Schema({
     ref: "user",
     required: [true, "Blog author not found!"],
   },
+  keywords: [],
   active: {
     type: Boolean,
     default: false,

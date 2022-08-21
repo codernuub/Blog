@@ -1,203 +1,168 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/icofont/icofont.min.css" />
+    <link rel="stylesheet" href="/public/css/font.css" />
 
-  <link rel="stylesheet" href="/public/icofont/icofont.min.css" />
-  <link rel="stylesheet" href="/public/css/font.css" />
+    <link rel="stylesheet" href="/public/admin/css/template.css" />
+    <link rel="stylesheet" href="/public/admin/css/header.css" />
+    <link rel="stylesheet" href="/public/admin/css/navigation.css" />
+    <link rel="stylesheet" href="/public/admin/css/popup.css" />
+    <link rel="stylesheet" href="/public/admin/css/blogs.css" />
+  </head>
 
-  <link rel="stylesheet" href="/public/admin/css/template.css" />
-  <link rel="stylesheet" href="/public/admin/css/header.css" />
-  <link rel="stylesheet" href="/public/admin/css/navigation.css" />
-  <link rel="stylesheet" href="/public/admin/css/blogs.css" />
-</head>
+  <body>
+    <!--HEADER-->
+    <header class="up">
+      <h2 class="upr">Admin Panel</h2>
 
-<body>
-
-  <!--HEADER-->
-  <header class="up">
-
-    <h2 class="upr">Admin Panel</h2>
-
-    <div class="upl">
-      <span class="item power"><i class="icofont-power"></i></span>
-    </div>
-
-  </header>
-
-  <div class="lp">
-    <!--SIDE NAVIGATION-->
-    <div class="lrp">
-
-      <div class="profile">
-        <img src="/public/images/profile.jfif" alt="admin" />
-        <p>Abdullah Khan</p>
+      <div class="upl">
+        <span class="item power"><i class="icofont-power"></i></span>
       </div>
+    </header>
 
-      <nav>
-
-        <div class="nav-sec">
-          <ul>
-            <li><i class="icofont-user"></i>&nbsp;<a href="/dashboard/profile">Profile</a></li>
-          </ul>
-        </div>
-        <div class="nav-sec">
-
-          <ul>
-            <li><i class="icofont-edit"></i>&nbsp;<a href="/dashboard/blogs/create">Create Blog</a></li>
-            <li><i class="icofont-blogger"></i>&nbsp;<a href="/dashboard/blogs">Blogs</a></li>
-            <li><i class="icofont-list"></i>&nbsp;<a href="/dashboard/categories">Categories</a></li>
-          </ul>
+    <div class="lp">
+      <!--SIDE NAVIGATION-->
+      <div class="lrp">
+        <div class="profile">
+          <img src="/public/images/profile.jfif" alt="admin" />
+          <p>Abdullah Khan</p>
         </div>
 
-        <div class="nav-sec">
-          <ul>
-            <li><i class="icofont-users-alt-5"></i>&nbsp;<a href="/dashboard/users">Users</a></li>
-          </ul>
-        </div>
-
-      </nav>
-
-    </div>
-    <!--MAIN CONTENT-->
-    <div class="llp">
-
-      <!--MAIN CONTENT HEAD-->
-      <div class="head">
-        <h3>Blogs</h3>
-        <div class="items">
-          <div class="item">
-            <a href="/dashboard/blogs/create">
-              <i class="icofont-edit"></i>&nbsp;
-              <span>Create Blog</span>
-            </a>
+        <nav>
+          <div class="nav-sec">
+            <ul>
+              <li>
+                <i class="icofont-user"></i>&nbsp;<a href="/dashboard/profile"
+                  >Profile</a
+                >
+              </li>
+            </ul>
           </div>
-        </div>
+          <div class="nav-sec">
+            <ul>
+              <li>
+                <i class="icofont-edit"></i>&nbsp;<a
+                  href="/dashboard/blogs/create"
+                  >Create Blog</a
+                >
+              </li>
+              <li>
+                <i class="icofont-blogger"></i>&nbsp;<a href="/dashboard/blogs"
+                  >Blogs</a
+                >
+              </li>
+              <li>
+                <i class="icofont-list"></i>&nbsp;<a
+                  href="/dashboard/categories"
+                  >Categories</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-sec">
+            <ul>
+              <li>
+                <i class="icofont-users-alt-5"></i>&nbsp;<a
+                  href="/dashboard/users"
+                  >Users</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
-
-      <!--MAIN CONTENT BODY-->
-      <div class="blogs">
-
-        <div class="blog">
-          <div class="thumbnail">
-            <img src="/public/images/blog1.jfif" />
+      <!--MAIN CONTENT-->
+      <div class="llp">
+        <!--MAIN CONTENT HEAD-->
+        <div class="head">
+          <h3>Blogs</h3>
+          <div class="items">
+            <div class="item">
+              <a href="/dashboard/blogs/create">
+                <i class="icofont-edit"></i>&nbsp;
+                <span>Create Blog</span>
+              </a>
+            </div>
           </div>
-          <div class="content">
-            <div class="head">
-              <h3>Computer theek krne ka tareeka</h3>
-              <i class="icofont-globe published"></i>
-            </div>
-
-            <div class="meta-content mc-1">
-              <span class="author"><i class="icofont-user-alt-3"></i>&nbsp;Abdullah</span>
-              <span class="category"><i class="icofont-list"></i>&nbsp;Technical</span>
-            </div>
-            <div class="meta-content mc-1">
-              <span class="time"><i class="icofont-calendar"></i>&nbsp;27 July 2022</span>
-            </div>
-            <p>It is a long established fact that a reader will be distracted by the readable content of a
-              page when looking at its layout...</p>
-          </div>
-          <span class="gear"> 
-            <i class="icofont-gear"></i>
-          </span>
-          <ul class="tools">
-            <li class="view">
-              <span class="icofont-eye"></span>&nbsp;<span>View</span>
-            </li>
-            <li class="edit">
-              <span class="icofont-ui-edit"></span>&nbsp;<span>Edit</span>
-            </li>
-            <li class="eye">
-              <span class="icofont-globe"></span>&nbsp;<span>Unpublish</span>
-            </li>
-          </ul>
         </div>
 
+        <!--MAIN CONTENT BODY-->
+        <div class="blogs">
+          <!--
+          <div class="blog">
+            <div class="thumbnail">
+              <img src="/public/images/blog1.jfif" />
+            </div>
+            <div class="content">
+              <div class="head">
+                <h3>Computer theek krne ka tareeka</h3>
+                <i class="icofont-globe published"></i>
+              </div>
 
-        <div class="blog">
-          <div class="thumbnail">
-            <img src="/public/images/blog1.jfif" />
+              <div class="meta-content mc-1">
+                <span class="author"
+                  ><i class="icofont-user-alt-3"></i>&nbsp;Abdullah</span
+                >
+                <span class="category"
+                  ><i class="icofont-list"></i>&nbsp;Technical</span
+                >
+              </div>
+              <div class="meta-content mc-1">
+                <span class="time"
+                  ><i class="icofont-calendar"></i>&nbsp;27 July 2022</span
+                >
+              </div>
+              <p>
+                It is a long established fact that a reader will be distracted
+                by the readable content of a page when looking at its layout...
+              </p>
+            </div>
+            <span class="gear" onclick="toggleTool(event)">
+              <i class="icofont-gear"></i>
+            </span>
+            <ul class="tools">
+              <li class="view">
+                <span style="font-size: 0.8rem" class="icofont-eye"></span
+                >&nbsp;<span>Preview</span>
+              </li>
+              <li class="edit">
+                <span class="icofont-ui-edit"></span>&nbsp;<span
+                  style="margin-left: 1.5px"
+                  >Edit</span
+                >
+              </li>
+              <li class="eye">
+                <span class="icofont-ui-block"></span>&nbsp;<span
+                  style="margin-left: 1.5px"
+                  >Block</span
+                >
+              </li>
+              <li class="delete">
+                <span class="icofont-trash"></span>&nbsp;<span
+                  style="margin-left: 1.5px"
+                  >Remove</span
+                >
+              </li>
+            </ul>
           </div>
-          <div class="content">
-            <div class="head">
-              <h3>Ladki se number lene ka tareeka</h3>
-              <i class="icofont-globe unpublished"></i>
-            </div>
-            <div class="meta-content mc-1">
-              <span class="author"><i class="icofont-user-alt-3"></i>&nbsp;Daief</span>
-              <span class="category"><i class="icofont-list"></i>&nbsp;Tips & Tricks</span>
-            </div>
-            <div class="meta-content mc-1">
-              <span class="time"><i class="icofont-calendar"></i>&nbsp;27 July 2022</span>
-            </div>
-            <p>It is a long established fact that a reader will be distracted by the readable content of a
-              page when looking at its layout...</p>
-            
-          </div>
-          <span class="gear"> 
-            <i class="icofont-gear"></i>
-          </span>
+          -->
         </div>
-
-        <div class="blog">
-          <div class="thumbnail">
-            <img src="/public/images/blog1.jfif" />
-          </div>
-          <div class="content">
-            <div class="head">
-              <h3>Human Behaviours</h3>
-              <i class="icofont-globe published"></i>
-            </div>
-            <div class="meta-content mc-1">
-              <span class="author"><i class="icofont-user-alt-3"></i>&nbsp;Amna</span>
-              <span class="category"><i class="icofont-list"></i>&nbsp;Physcology</span>
-            </div>
-            <div class="meta-content mc-1">
-              <span class="time"><i class="icofont-calendar"></i>&nbsp;26 July 2022</span>
-            </div>
-            <p>It is a long established fact that a reader will be distracted by the readable content of a
-              page when looking at its layout...</p>
-            
-          </div>
-          <span class="gear"> 
-            <i class="icofont-gear"></i>
-          </span>
-        </div>
-
-        <div class="blog">
-          <div class="thumbnail">
-            <img src="/public/images/blog1.jfif" />
-          </div>
-          <div class="content">
-            <div class="head">
-              <h3>Increase Tiktok Followers In 10 days</h3>
-              <i class="icofont-globe published"></i>
-            </div>
-            <div class="meta-content mc-1">
-              <span class="author"><i class="icofont-user-alt-3"></i>&nbsp;Sadiya</span>
-              <span class="category"><i class="icofont-list"></i>&nbsp;Tips & Tricks</span>
-            </div>
-            <div class="meta-content mc-1">
-              <span class="time"><i class="icofont-calendar"></i>&nbsp;26 July 2022</span>
-            </div>
-            <p>It is a long established fact that a reader will be distracted by the readable content of a
-              page when looking at its layout...</p>
-            
-          </div>
-          <span class="gear"> 
-            <i class="icofont-gear"></i>
-          </span>
-        </div>
+        <!--MAIN CONTENT END-->
       </div>
-
     </div>
+    <!--popup form part-->
+    <div class="backdrop">
+      <div class="popup"></div>
+    </div>
+    <!--popup form part-->
+  </body>
 
-  </div>
-
-</body>
-
+  <script src="/public/admin/js/blog/template.js"></script>
+  <script src="/public/admin/js/blog/blogs.js"></script>
 </html>
