@@ -1,4 +1,4 @@
-document.querySelector(".logout").addEventListener("click", async () => {
+document.querySelector(".power").addEventListener("click", async () => {
   try {
     const raw = await fetch("/api/v1/auth/logout", { method: "GET" });
     const res = await raw.json();

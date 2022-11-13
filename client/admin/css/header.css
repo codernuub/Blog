@@ -5,12 +5,15 @@
   --grey: #a6a6a6;
 }
 
-.up>.upl>.item {
+.up > .upl > .item {
   margin-left: 10px;
-  font-size:1.4rem;
+  font-size: 1.4rem;
   cursor: pointer;
 }
 
-.up>.upl>.power:hover {
+.up > .upl > .power:hover {
   color: orangered;
+}
+.up > .upr {
+  text-transform: capitalize;
 }

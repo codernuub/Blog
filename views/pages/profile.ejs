@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/public/admin/css/header.css" />
     <link rel="stylesheet" href="/public/admin/css/navigation.css" />
     <link rel="stylesheet" href="/public/admin/css/popup.css" />
-    <link rel="stylesheet" href="/public/admin/css/users.css" />
+    <link rel="stylesheet" href="/public/admin/css/profile.css" />
   </head>
 
   <body>
@@ -32,19 +32,36 @@
       <div class="llp">
         <!--MAIN CONTENT HEAD-->
         <div class="head">
-          <h3>Users</h3>
-          <div class="items">
-            <div class="item">
-              <a id="create" onclick="openPopup(event)">
-                <i id="create" class="icofont-edit"></i>&nbsp;
-                <span id="create">Create User</span>
-              </a>
-            </div>
-          </div>
+          <h3>Profile</h3>
         </div>
 
         <!--MAIN CONTENT BODY-->
-        <div class="users"></div>
+        <div class="profile">
+          <div class="profile-form">
+            <h3>Change Profile</h3>
+            <form class="chng-profile">
+              <div class="inputs">
+                <input name="name" placeholder="Name" value="<%=user.name%>" />
+                <input
+                  name="username"
+                  placeholder="Username"
+                  value="<%=user.username%>"
+                />
+              </div>
+              <button>Save Changes</button>
+            </form>
+          </div>
+          <div class="profile-form">
+            <h3>Change Password</h3>
+            <form class="chng-pwd">
+              <div class="inputs">
+                <input name="password" placeholder="Old Password" />
+                <input name="newPassword" placeholder="New Password" />
+              </div>
+              <button>Save Changes</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
     <!--popup form part-->
@@ -54,7 +71,10 @@
     <!--popup form part-->
   </body>
 
-  <script defer src="/public/admin/js/user/template.js"></script>
-  <script defer src="/public/admin/js/user/users.js"></script>
+  <script>
+    const userId = "<%=user._id%>"
+  </script>
+  <script defer src="/public/admin/js/profile/template.js"></script>
+  <script defer src="/public/admin/js/profile/profile.js"></script>
   <script defer src="/public/admin/js/logout.js"></script>
 </html>

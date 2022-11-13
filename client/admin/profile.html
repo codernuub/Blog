@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="/public/admin/css/template.css" />
     <link rel="stylesheet" href="/public/admin/css/header.css" />
     <link rel="stylesheet" href="/public/admin/css/navigation.css" />
-    <link rel="stylesheet" href="/public/admin/css/popup.css"/>
-    <link rel="stylesheet" href="/public/admin/css/users.css" />
+    <link rel="stylesheet" href="/public/admin/css/popup.css" />
+    <link rel="stylesheet" href="/public/admin/css/profile.css" />
   </head>
 
   <body>
@@ -83,45 +83,32 @@
       <div class="llp">
         <!--MAIN CONTENT HEAD-->
         <div class="head">
-          <h3>Users</h3>
-          <div class="items">
-            <div class="item">
-              <a id="create" onclick="openPopup(event)">
-                <i id="create" class="icofont-edit"></i>&nbsp;
-                <span id="create">Create User</span>
-              </a>
-            </div>
-          </div>
+          <h3>Profile</h3>
         </div>
 
         <!--MAIN CONTENT BODY-->
-        <div class="users">
-          <!--
-        <div class="user">
-          
-          <img src="/public/images/default-profile.jfif" alt="abdullah" />
-          
-          <div class="details">
-            <h3>Dummy User</h3>
-            <p><span class="icofont-user"></span>&nbsp;<span>DummyUserName</span></p>
-            <p><span class="icofont-blogger"></span>&nbsp;<span>0 Blogs</span></p>
+        <div class="profile">
+          <div class="profile-form">
+            <h3>Change Profile</h3>
+            <form class="chng-profile">
+              <div class="inputs">
+                <input name="Name" placeholder="Name" />
+                <input name="Username" placeholder="Username" />
+              </div>
+              <button>Save Changes</button>
+            </form>
           </div>
-          
-          <span class="icofont-gear gear"></span>
-          
-          <ul class="tools">
-            <li class="edit">
-              <span class="icofont-ui-edit"></span>&nbsp;<span>Edit</span>
-            </li>
-            <li class="eye">
-              <span class="icofont-eye-blocked"></span>&nbsp;<span>Suspend</span>
-            </li>
-            <li class="delete">
-              <span class="icofont-ui-delete"></span>&nbsp;<span>Remove</span>
-            </li>
-          </ul>
+          <div class="profile-form">
+            <h3>Change Password</h3>
+            <form class="chng-pwd">
+              <div class="inputs">
+                <input name="password" placeholder="Password" />
+                <input name="confirmPassword" placeholder="Confirm Password" />
+              </div>
+              <button>Save Changes</button>
+            </form>
+          </div>
         </div>
-        --></div>
       </div>
     </div>
     <!--popup form part-->
@@ -131,6 +118,6 @@
     <!--popup form part-->
   </body>
 
-  <script defer src="/public/admin/js/user/template.js"></script>
-  <script defer src="/public/admin/js/user/users.js"></script>
+  <script defer src="/public/admin/js/profile/template.js"></script>
+  <script defer src="/public/admin/js/profile/profile.js"></script>
 </html>

@@ -1,0 +1,44 @@
+.profile {
+  width: 95%;
+  padding: 2.5%;
+}
+
+.profile > .profile-form {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.profile > .profile-form:nth-child(2) {
+  margin-top:30px;
+}
+
+.profile > .profile-form > h3 {
+  margin: 0;
+  color: grey;
+}
+.profile > .profile-form > form {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+.profile-form > form > .inputs {
+  display: flex;
+  width: 95%;
+}
+.profile-form > form > .inputs > input {
+  width: 44%;
+  padding: 1.5%;
+  margin-right: 4%;
+  border-radius: 5px;
+  font-size: 0.9em;
+  border: transparent;
+  outline: none;
+  height: fit-content;
+}
+.profile-form > form > button {
+  margin: 0 0 0 auto;
+  white-space: nowrap;
+}

@@ -44,14 +44,19 @@ app.get("/dashboard/login", authController.checkAuth, (req, res) => {
   return res.status(200).sendFile(file);
 });
 
-app.get("/dashboard/profile", authController.checkAuth, (req, res) => {
-  const file = path.resolve(path.join("client", "admin", "profile.html"));
-  return res.status(200).sendFile(file);
-});
+app.get(
+  "/dashboard/profile",
+  authController.authorizePage(["admin", "blogger"]),
+  (req, res) => {
+    return res.render("pages/profile", {
+      user: req.user,
+    });
+  }
+);
 
 app.get(
   "/dashboard/blogs",
-  authController.authorizePage(["admin"]),
+  authController.authorizePage(["admin", "blogger"]),
   (req, res) => {
     return res.render("pages/blogs", {
       user: req.user,
