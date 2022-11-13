@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGOURI || 'mongodb://127.0.0.1:27017/shopDB', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
-    .then((db) => {
+    .then(() => {
         console.log('Connected to database!');
     })
     .catch(err => {

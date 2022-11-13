@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/public/icofont/icofont.min.css" />
+    <link rel="stylesheet" href="/public/css/font.css" />
+    <!-- Include stylesheet -->
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/public/admin/css/template.css" />
+    <link rel="stylesheet" href="/public/admin/css/header.css" />
+    <link rel="stylesheet" href="/public/admin/css/navigation.css" />
+    <link rel="stylesheet" href="/public/admin/css/popup.css" />
+    <link rel="stylesheet" href="/public/admin/css/blogform.css" />
+  </head>
+
+  <body>
+    <!--HEADER-->
+    <header class="up">
+      <h2 class="upr">Admin Panel</h2>
+
+      <div class="upl">
+        <span class="item power"><i class="icofont-power"></i></span>
+      </div>
+    </header>
+
+    <div class="lp">
+      <!--SIDE NAVIGATION-->
+      <%-include("../partials/navigation.ejs", {user:user})%>
+      <!--MAIN CONTENT-->
+      <div class="llp">
+        <!--MAIN CONTENT BODY-->
+        <div class="blog-form-container">
+          <form class="blog-form">
+            <!--Blog Meta Info-->
+            <div class="blog-info">
+              <!--Blog Thumbnail-->
+              <div class="thumbnail">
+                <img
+                  class="preview-img"
+                  src="/public/images/default-thumbnail.jfif"
+                  alt="blog-thumnail"
+                />
+                <input
+                  oninput="handleLinkPaste(event)"
+                  name="thumbnail"
+                  placeholder="Paste thumbnail link"
+                />
+              </div>
+              <div class="meta-info">
+                <!--main-grid-1-->
+                <div class="grid-1">
+                  <!--Blog Title-->
+                  <input
+                    name="title"
+                    placeholder="Enter Blog Title (35 characters)"
+                  />
+                  <!--Blog Description-->
+                  <select id="categories" name="category" placeholder="Select Category">
+                    <option value="">Select Category</option>
+                  </select>
+                </div>
+                <!--main-grid-2-->
+                <textarea
+                  class="grid-2"
+                  name="description"
+                  placeholder="Enter Blog Description (100 characters)"
+                ></textarea>
+                <!--main-grid-2-->
+                <textarea
+                  class="grid-2"
+                  name="keywords"
+                  placeholder="Enter keywords separated by commas eg. Best, Horrors, Drama"
+                ></textarea>
+              </div>
+            </div>
+
+            <!--Blog Editor Container -->
+            <div class="editor-container">
+              <!--Editor Text Field-->
+              <div id="editor">
+                
+              </div>
+            </div>
+
+            <!--Blog Save Buttons-->
+            <div class="save-btn">
+              <button id="0">Save</button>
+              <button id="1">Save and Publish</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--popup form part-->
+    <div class="backdrop">
+      <div class="popup"></div>
+    </div>
+    <!--popup form part-->
+  </body>
+  <!-- Include the Quill library -->
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+  <!-- Initialize Quill editor -->
+  <script>
+    const toolbarOptions = [
+      ["bold", "italic", "underline", "strike"], // toggled buttons
+      ["blockquote", "code-block"],
+
+      [{ header: 1 }, { header: 2 }], // custom button values
+      [{ list: "ordered" }, { list: "bullet" }],
+      [{ script: "sub" }, { script: "super" }], // superscript/subscript
+      [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+      [{ direction: "rtl" }], // text direction
+
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+      [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+      [{ font: [] }],
+      [{ align: [] }],
+
+      ["link", "image"],
+      ["clean"], // remove formatting button
+    ];
+
+    const quill = new Quill("#editor", {
+      modules: {
+        toolbar: toolbarOptions,
+      },
+      theme: "snow",
+    });
+  </script>
+
+  <script src="/public/admin/js/blog/template.js"></script>
+  <script src="/public/admin/js/blog/blogform.js"></script>
+</html>
