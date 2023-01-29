@@ -7,6 +7,7 @@ const app = express();
 const AppError = require("./utils/appError");
 //controller modules
 const authController = require("./controllers/authController");
+const categoryController = require("./controllers/categoryController");
 const globalErrorHandler = require("./controllers/errorController");
 //api routes
 const authRoutes = require("./routes/apis/authRoutes");
@@ -24,9 +25,10 @@ app.use("/public", express.static("client"));
 //config views
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  const file = path.resolve(path.join("client", "index.html"));
-  return res.status(200).sendFile(file);
+app.get("/", categoryController.fetchActiveCategories, (req, res) => {
+  return res.render("pages/index", {
+    categories: req.categories,
+  });
 });
 
 app.get(

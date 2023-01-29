@@ -59,10 +59,18 @@ exports.fetchBlogs = catchAsync(async (req, res, next) => {
   });
 });
 
+/**
+ * @name fetchBlog
+ * @description fetch blog details with blog Id and accessiible only for admin and blogger
+ */
 exports.fetchBlog = catchAsync(async (req, res, next) => {
-  const blog = await BlogModel.findOne({
-    _id: req.params.blogId
-  }).lean();
+  const query = {
+    _id: req.params.blogId,
+  };
+  if (req.user.role === "blogger") {
+    query.author = req.user.userId;
+  }
+  const blog = await BlogModel.findOne(query).lean();
 
   if (!blog) return next(new AppError("Blog not found!"));
 

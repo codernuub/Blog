@@ -9,7 +9,9 @@ const AppError = require("../utils/appError");
  * @description fetch categories for bloggers/readers
  */
 exports.fetchCategories = catchAsync(async (req, res, next) => {
-  const categories = await CategoryModel.find({ active: true }).select("title").lean();
+  const categories = await CategoryModel.find({ active: true })
+    .select("title")
+    .lean();
 
   return res.status(200).json({
     status: "success",
@@ -30,7 +32,7 @@ exports.fetchAllCategories = catchAsync(async (req, res, next) => {
       $lookup: {
         from: "blogs",
         localField: "_id",
-        foreignField: "categoryId",
+        foreignField: "category",
         pipeline: [
           {
             $project: {
@@ -46,7 +48,7 @@ exports.fetchAllCategories = catchAsync(async (req, res, next) => {
         _id: 1,
         title: 1,
         blogs: { $size: "$blogs" },
-        active:1,
+        active: 1,
         createdAt: 1,
       },
     },
@@ -66,6 +68,59 @@ exports.fetchAllCategories = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.fetchActiveCategories = catchAsync(async (req, res, next) => {
+  const categories = await CategoryModel.aggregate([
+    {
+      $match: {
+        active: true,
+      },
+    },
+    {
+      $lookup: {
+        from: "blogs",
+        let: {
+          category: "$_id",
+        },
+        pipeline: [
+          {
+            $match: {
+              $expr: {
+                $and: [
+                  { $eq: ["$category", "$$category"] },
+                  { $eq: ["$active", true] },
+                ],
+              },
+            },
+          },
+          {
+            $project: {
+              _id: 1,
+            },
+          },
+        ],
+        as: "blogs",
+      },
+    },
+    {
+      $project: {
+        _id: 1,
+        title: 1,
+        blogs: { $size: "$blogs" },
+        active: 1,
+        createdAt: 1,
+      },
+    },
+    {
+      $sort: {
+        createdAt: -1,
+      },
+    },
+  ]);
+
+  req.categories = categories;
+  return next();
+});
+
 /**
  * @name addCategory
  * @description add new category in database
@@ -73,7 +128,7 @@ exports.fetchAllCategories = catchAsync(async (req, res, next) => {
 exports.addCategory = catchAsync(async (req, res, next) => {
   const category = await CategoryModel.create({
     title: req.body.title,
-    active:req.body.active,
+    active: req.body.active,
     createdAt: Date.now(),
   });
 
@@ -90,10 +145,7 @@ exports.addCategory = catchAsync(async (req, res, next) => {
  * @description update category
  */
 exports.updateCategory = catchAsync(async (req, res, next) => {
-  await CategoryModel.updateOne(
-    { _id: req.params.categoryId },
-    req.body
-  );
+  await CategoryModel.updateOne({ _id: req.params.categoryId }, req.body);
 
   return res.status(200).json({
     status: "success",

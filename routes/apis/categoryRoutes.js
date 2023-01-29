@@ -20,6 +20,7 @@ router.get(
   categoryController.fetchAllCategories
 );
 
+
 router.patch(
   "/:categoryId",
   authController.authorizeAPI(["admin"]),

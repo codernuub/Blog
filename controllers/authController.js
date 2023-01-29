@@ -71,6 +71,9 @@ exports.authorizeAPI = (roles) => {
   return async (req, res, next) => {
     //get jwt token from cookies or headers
     const token = req.cookies.token;
+
+    //allow user to access the resource without login
+    if (!token && roles.includes("guest")) return next();
     //if token not available send error resposne
     if (!token) return next(new AppError("You are not authorized!", 401));
 
@@ -149,7 +152,6 @@ exports.authorizePage = (roles) => {
  * @name changePassword
  */
 exports.changePassword = catchAsync(async (req, res, next) => {
-
   if (!req.body.newPassword || !req.body.password) {
     return next(new AppError("Please provide password!", 400));
   }
