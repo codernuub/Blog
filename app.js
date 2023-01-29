@@ -8,6 +8,7 @@ const AppError = require("./utils/appError");
 //controller modules
 const authController = require("./controllers/authController");
 const categoryController = require("./controllers/categoryController");
+const blogController = require("./controllers/blogController");
 const globalErrorHandler = require("./controllers/errorController");
 //api routes
 const authRoutes = require("./routes/apis/authRoutes");
@@ -92,6 +93,18 @@ app.get(
   (req, res) => {
     return res.render("pages/users", {
       user: req.user,
+    });
+  }
+);
+
+app.get(
+  "/:title",
+  categoryController.fetchActiveCategories,
+  blogController.fetchActiveBlog,
+  (req, res) => {
+    return res.render("pages/blog", {
+      categories: req.categories,
+      blog: req.blog || {},
     });
   }
 );

@@ -1,0 +1,53 @@
+.blog-content > h2 {
+  width: 80%;
+}
+
+.blog-content > .blog-details > .profile {
+  width: fit-content;
+  background-color: var(--secondary-color);
+  height: 40px;
+  padding: 0 5px;
+  border-radius: 20px;
+  display: flex;
+}
+
+.blog-content > .blog-details > .profile > img {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin: auto 0;
+}
+
+.blog-content > .blog-details > .profile > span {
+  margin: auto 10px;
+  font-size: 1.2rem;
+}
+
+.blog-content > .blog-details > .mini-info {
+  margin: 15px 0 5px 0;
+}
+
+.blog-content > .blog-details > .mini-info > span {
+  display: block;
+  color: var(--grey);
+  font-size: 1.3rem;
+  margin-right: 15px;
+}
+
+.blog-content > .blog-details > .mini-info > span > b {
+  color: var(--primary-color);
+}
+
+.blog-content > .readable-content ul {
+  list-style: none;
+}
+
+.blog-content > .readable-content ul li::before {
+  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: var(--primary-color); /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1.1em; /* Also needed for space (tweak if needed) */
+}

@@ -82,6 +82,29 @@ exports.fetchBlog = catchAsync(async (req, res, next) => {
   });
 });
 
+/**
+ * @name fetchActiveBlog
+ */
+exports.fetchActiveBlog = catchAsync(async (req, res, next) => {
+  const blog = await BlogModel.findOne({
+    slug: req.params.title,
+    active: true,
+    block: false,
+  })
+    .populate([
+      {
+        path: "author",
+        select: "name profile",
+      },
+      { path: "category", select: "title" },
+    ])
+    .lean();
+
+  req.blog = blog;
+
+  return next();
+});
+
 exports.updateBlog = catchAsync(async (req, res, next) => {
   //remove restricted fields
   ["block"].forEach((field) => {

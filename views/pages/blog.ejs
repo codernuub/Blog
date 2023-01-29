@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE-edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta name="keywords" content="<%=categories.map(cat=>cat.title).join(',')%>"/>
-    <meta name="robots" content="index, follow" />
+    <meta name="description" content="<%=blog.description%>" />
+    <meta name="keywords" content="<%=blog.keywords.join(',')%>" />.
     <link rel="stylesheet" href="/public/icofont/icofont.min.css" />
     <link rel="stylesheet" href="/public/css/font.css" />
     <link rel="stylesheet" href="/public/css/index.css" />
-    <title>Lissa Hirf Blogs</title>
+    <link rel="stylesheet" href="/public/css/blog.css" />
+    <title><%=blog.title%></title>
   </head>
 
   <body>
@@ -24,28 +25,32 @@
 
     <div class="site-container">
       <main>
-        <div class="blogs">
-          <div class="blogs-container">
-            <div class="blog empty">
-              <p>Please Wait! Searching Blogs...</p>
+        <div class="blog-content">
+          <div class="blog-details">
+            <div class="profile">
+              <% const profile=blog.author.profile ? blog.author.profile:"/public/images/profile.jfif"%>
+              <img src="<%=profile%>" alt="user profile" />
+              <span><%=blog.author.name%></span>
+            </div>
+            <div class="mini-info">
+              <% const date = new Date(blog.createdAt).toLocaleDateString()%>
+              <span>Published On <b><%=date%></b></span>
+              <span>Category <b><%=blog.category.title%></b></span>
             </div>
           </div>
-          <!--Pagination-->
-          <div class="pagination">
-            <a onclick="changePage(-1, 0)">&laquo;</a>
-            <a onclick="changePage(0, 1)">1</a>
-            <a onclick="changePage(0, 2)">2</a>
-            <a onclick="changePage(0, 3)">3</a>
-            <a onclick="changePage(0, 4)">4</a>
-            <a onclick="changePage(1, 0)">&raquo;</a>
+          <h3>5 Reasons for choosing cleaning services for home & office</h3>
+          <!--readable content-->
+          <div class="readable-content">
+            <%-blog.content%>
           </div>
+          <!--readable content-->
         </div>
         <aside>
           <h2>Browse Categories</h2>
           <div class="categories">
             <% for(var i=0; i<categories.length; i++) {%>
-              <% const link = `/?category=${categories[i]._id}`; %>
-              <a href="<%=link%>"><%=categories[i].title%> (<%=categories[i].blogs%>)</a>
+                <% const link = `/?category=${categories[i]._id}`; %>
+                <a href="<%=link%>"><%=categories[i].title%> (<%=categories[i].blogs%>)</a>
             <% } %>
           </div>
         </aside>
@@ -74,14 +79,14 @@
           <div class="right">
             <h3>Categories</h3>
             <ul>
-              <% for(var i=0; i<categories.length; i++) {%>
-                <% const link = `/?category=${categories[i]._id}`; %>
-                <li>
-                  <a href="<%=link%>">
-                    <%= categories[i].title%>
-                  </a>
-                </li>
-              <% } %>
+                <% for(var i=0; i<categories.length; i++) {%>
+                    <% const link = `/?category=${categories[i]._id}`; %>
+                    <li>
+                      <a href="<%=link%>">
+                        <%= categories[i].title%>
+                      </a>
+                    </li>
+                  <% } %>
             </ul>
           </div>
         </div>
@@ -89,12 +94,6 @@
         <hr />
         <div class="footer-bottom">
           <div class="footer-menu">
-            <!--<ul>
-              <li><a href="">Home</a></li>
-              <li><a href="">About</a></li>
-              <li><a href="">Blog</a></li>
-              <li><a href="">Contact</a></li>
-            </ul>-->
             <p>Copyright &copy; 2023 Lissa & Hirf Blog</p>
           </div>
           <div class="social-icons">
@@ -107,5 +106,4 @@
       </div>
     </footer>
   </body>
-  <script src="/public/js/app.js"></script>
 </html>
