@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
+const { default: mongoose } = require("mongoose");
 
 /**
  * @name login
@@ -86,6 +87,7 @@ exports.authorizeAPI = (roles) => {
       //store user payload in req.body object to access in next function
       req.user = userPayload;
     } catch (err) {
+      if(roles.includes("guest")) return next();
       return res.status(401).json({
         status: "unauthorized",
         message: err.message,

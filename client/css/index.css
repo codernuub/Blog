@@ -1,7 +1,8 @@
 :root {
-  --primary-color: #f380c3;
-  --secondary-color: #fee1e8;
-  --bg-color: #fee1e864;
+  --primary-color: #000000;
+  --heading-color: #54e3d5;
+  --secondary-color: #54e3d530;
+  --bg-color: #54e3d510;
   --grey: #a6a6a6;
 }
 
@@ -195,7 +196,7 @@ main {
 
 /*Footer*/
 footer {
-  background-color: #fee1e8;
+  background-color: var(--heading-color);
   margin-top: 100px;
   padding: 100px 0;
 }

@@ -127,7 +127,7 @@ function blogTemp(blog) {
       >
     </div>
     <p>
-      ${blog.description}
+      ${blog.description ? blog.description.split(" ").slice(0, 15).join(" ") : ""}...
     </p>
   </div>
   <span class="gear" onclick="toggleTool(event)">

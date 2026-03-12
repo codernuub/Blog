@@ -98,7 +98,7 @@ function fetchBlogs() {
   )
     .then((res) => res.json())
     .then((res) => {
-      if (res.status !== "success") throw { message: err.message };
+      if (res.status !== "success") throw { message: res.message };
 
       if (!res.data.blogs.length) throw { message: "No Blogs Found" };
 
