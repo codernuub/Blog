@@ -102,6 +102,9 @@ app.get(
   categoryController.fetchActiveCategories,
   blogController.fetchActiveBlog,
   (req, res) => {
+    if(!req.blog)
+      return res.render("pages/404");
+    
     return res.render("pages/blog", {
       categories: req.categories,
       blog: req.blog || {},

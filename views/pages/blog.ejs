@@ -5,10 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta name="description" content="<%=blog.description%>" />
-    <meta name="keywords" content="<%=blog.keywords.join(',')%>" />.
+    <meta name="keywords" content="<%= Array.isArray(blog.keywords) ? blog.keywords.join(',') : '' %>" />
     <link rel="stylesheet" href="/public/icofont/icofont.min.css" />
     <link rel="stylesheet" href="/public/css/font.css" />
-    <link rel="stylesheet" href="/public/css/index.css" />
     <link rel="stylesheet" href="/public/css/blog.css" />
     <title><%=blog.title%></title>
   </head>
@@ -16,9 +15,10 @@
   <body>
     <div class="site-container">
       <!--Navigation Header-->
+      <br/>
       <nav>
         <div class="logo">
-          <h2>Blogs</h2>
+          <h1>Blogs</h1>
         </div>
       </nav>
     </div>
@@ -38,7 +38,9 @@
               <span>Category <b><%=blog.category.title%></b></span>
             </div>
           </div>
-          <h3>5 Reasons for choosing cleaning services for home & office</h3>
+          <br/>
+          <h1><%-blog.title%></h1>
+          <br/>
           <!--readable content-->
           <div class="readable-content">
             <%-blog.content%>
@@ -56,54 +58,5 @@
         </aside>
       </main>
     </div>
-
-    <footer>
-      <div class="site-container">
-        <div class="footer-top">
-          <div class="left">
-            <h3>Blogs</h3>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters
-            </p>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters
-            </p>
-          </div>
-
-          <div class="right">
-            <h3>Categories</h3>
-            <ul>
-                <% for(var i=0; i<categories.length; i++) {%>
-                    <% const link = `/?category=${categories[i]._id}`; %>
-                    <li>
-                      <a href="<%=link%>">
-                        <%= categories[i].title%>
-                      </a>
-                    </li>
-                  <% } %>
-            </ul>
-          </div>
-        </div>
-
-        <hr />
-        <div class="footer-bottom">
-          <div class="footer-menu">
-            <p>Copyright &copy; 2023 Blog</p>
-          </div>
-          <div class="social-icons">
-            <i class="icofont-facebook"></i>
-            <i class="icofont-instagram"></i>
-            <i class="icofont-linkedin"></i>
-            <i class="icofont-twitter"></i>
-          </div>
-        </div>
-      </div>
-    </footer>
   </body>
 </html>

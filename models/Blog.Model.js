@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { createSlug } = require("../utils/text");
 
 const blogSchema = mongoose.Schema({
   thumbnail: String,
@@ -29,7 +30,7 @@ const blogSchema = mongoose.Schema({
     ref: "user",
     required: [true, "Blog author not found!"],
   },
-  keywords: [],
+  keywords: [String],
   active: {
     type: Boolean,
     default: false,
@@ -43,7 +44,7 @@ const blogSchema = mongoose.Schema({
 
 blogSchema.pre("save", function (next) {
   if (!this.title) return next();
-  this.slug = this.title.replace(/["&/"]/g, "");
+  this.slug = createSlug(this.title);
   return next();
 });
 

@@ -3,6 +3,7 @@ const BlogModel = require("../models/Blog.Model");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const APIFeatures = require("../utils/APIFeatures");
+const { createSlug } = require("../utils/text");
 
 exports.createBlog = catchAsync(async (req, res, next) => {
   if (req.body.active && !req.body.content) {
@@ -113,7 +114,7 @@ exports.updateBlog = catchAsync(async (req, res, next) => {
   });
 
   if (req.body.title) {
-    req.body["slug"] = req.body.title.replace(/["&/"]/g, "");
+    req.body["slug"] = createSlug(req.body.title);
   }
 
   await BlogModel.updateOne({ _id: req.params.blogId }, req.body);
