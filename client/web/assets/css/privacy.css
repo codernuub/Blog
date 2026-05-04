@@ -1,0 +1,106 @@
+body {
+    background-color: #eff7ff8c;
+}
+.privacy-body {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    font-family: "Inter", "Segoe UI", sans-serif;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Headings */
+.privacy-body h1,
+.privacy-body h2,
+.privacy-body h3 {
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #111;
+}
+
+.privacy-body h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.privacy-body h2 {
+    font-size: 22px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 8px;
+}
+
+.privacy-body h3 {
+    font-size: 18px;
+}
+
+/* Paragraphs */
+.privacy-body p {
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #555;
+}
+
+/* Lists */
+.privacy-body ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.privacy-body li {
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #444;
+}
+
+/* Links */
+.privacy-body a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.privacy-body a:hover {
+    text-decoration: underline;
+    color: #1d4ed8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .privacy-body {
+        padding: 25px 20px;
+        margin: 20px;
+    }
+
+    .privacy-body h1 {
+        font-size: 22px;
+    }
+
+    .privacy-body h2 {
+        font-size: 18px;
+    }
+}
+/*
+.privacy-body {
+    padding: 10px;
+    text-align: left;
+    width: 80%;
+    margin: auto;
+}
+
+.privacy-body h1,
+.privacy-body h2 {
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    .privacy-body {
+        width: 100%;
+    }
+}*/

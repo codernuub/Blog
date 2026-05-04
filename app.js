@@ -15,7 +15,9 @@ const authRoutes = require("./routes/apis/authRoutes");
 const userRoutes = require("./routes/apis/userRoutes");
 const categoryRoutes = require("./routes/apis/categoryRoutes");
 const blogRoutes = require("./routes/apis/blogRoutes");
-
+//page routes
+const adminRoutes = require("./routes/pages/admin.routes");
+const webRoutes = require("./routes/pages/web.routes");
 //parse body object
 app.use(express.json());
 //parse cookie
@@ -26,91 +28,22 @@ app.use("/public", express.static("client"));
 //config views
 app.set("view engine", "ejs");
 
-app.get("/", categoryController.fetchActiveCategories, (req, res) => {
-  return res.render("pages/index", {
-    categories: req.categories,
-  });
-});
+app.use("/", webRoutes);
+app.use("/dashboard", adminRoutes);
 
-app.get(
-  "/dashboard",
-  authController.authorizePage(["admin", "blogger"]),
-  (req, res) => {
-    return res.render("pages/dashboard", {
-      user: req.user,
-    });
-  }
-);
-
-app.get("/dashboard/login", authController.checkAuth, (req, res) => {
-  const file = path.resolve(path.join("client", "admin", "login.html"));
-  return res.status(200).sendFile(file);
-});
-
-app.get(
-  "/dashboard/profile",
-  authController.authorizePage(["admin", "blogger"]),
-  (req, res) => {
-    return res.render("pages/profile", {
-      user: req.user,
-    });
-  }
-);
-
-app.get(
-  "/dashboard/blogs",
-  authController.authorizePage(["admin", "blogger"]),
-  (req, res) => {
-    return res.render("pages/blogs", {
-      user: req.user,
-    });
-  }
-);
-
-app.get(
-  "/dashboard/blogs/create",
-  authController.authorizePage(["admin", "blogger"]),
-  (req, res) => {
-    return res.render("pages/blogform", {
-      user: req.user,
-    });
-  }
-);
-
-app.get(
-  "/dashboard/categories",
-  authController.authorizePage(["admin"]),
-  (req, res) => {
-    return res.render("pages/categories", {
-      user: req.user,
-    });
-  }
-);
-
-app.get(
-  "/dashboard/users",
-  authController.authorizePage(["admin"]),
-  (req, res) => {
-    return res.render("pages/users", {
-      user: req.user,
-    });
-  }
-);
-
-app.get(
+/*app.get(
   "/:title",
   categoryController.fetchActiveCategories,
   blogController.fetchActiveBlog,
   (req, res) => {
-    if(!req.blog)
-      return res.render("pages/404");
-    
+    if (!req.blog) return res.render("pages/404");
+
     return res.render("pages/blog", {
       categories: req.categories,
       blog: req.blog || {},
     });
-  }
-);
+  },
+);*/
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);

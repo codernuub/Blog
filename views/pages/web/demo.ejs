@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/public/web/assets\favicon_io\favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      href="/public/web/assets\favicon_io\apple-touch-icon.png"
+    />
+    <link rel="stylesheet" href="/public/web/assets/css/demoN.css" />
+    <link rel="stylesheet" href="/public/web/assets/css/new.css" />
+    <link rel="stylesheet" href="/public/web/assets/css/header.css" />
+     <link rel="stylesheet" href="/public/web/assets/css/about.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Demo</title>
+  </head>
+
+  <body>
+    <%- include("../../partials/web/header") %>
+
+    <div class="rowC demoMain">
+      <div class="columnC">
+        <div>
+          <h1 class="headingDemo">
+            Let's have a
+            <span> Demo </span>
+          </h1>
+          <div class="InputBoxParent">
+            <div class="InputBoxMain">
+              <!-- <input type="text" placeholder="Enter Phone no." class="inputBoxDemo"> -->
+              <br />
+              <select name="demo_grade" id="demo_grade" class="selectBox">
+                <option value="" disabled selected>Select Grade</option>
+                <option value="UKG">UKG</option>
+                <option value="I">I</option>
+                <option value="II">II</option>
+                <option value="III">III</option>
+                <option value="IV">IV</option>
+                <option value="V">V</option>
+                <option value="VI">VI</option>
+                <option value="VII">VII</option>
+                <option value="VIII">VIII</option>
+                <option value="IX">IX</option>
+                <option value="X">X</option>
+                <option value="XI">XI</option>
+                <option value="XII">XII</option>
+                <option value="English Grammar">English Grammar</option>
+                <option value="Content in Hindi Medium">
+                  Content in Hindi Medium
+                </option>
+                <option value="HTML Activities">HTML Activities</option>
+                <option value="Worksheets">Worksheets</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columnC demoImageDiv">
+        <img
+          src="/public/web/assets/images/demo_bg.png"
+          class="demoImage hide_in_mobile"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <h2 class="demoContentHead">Demo Content</h2>
+    <div class="demoContent">
+      <!-- <div class="singleContentBox">
+            <img src="/public/web/assets/images/demo_content_image.png" alt="">
+            <h4>Addition of 3 Digit Numbers</h4>
+            <div>
+                <p>Class 2</p>
+                <p>Mathematics</p>
+            </div>
+        </div> -->
+    </div>
+
+    <%- include("../../partials/web/footer") %>
+
+    <!--Tawk Plugin-->
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/5f086e9f67771f3813c0cc1c/default";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!-- Back to top button  -->
+    <button class="back_to_top" onClick="backToTop()" title="Back to top">
+      <img src="/public/web/assets/icon/arrow_up.svg" alt="" />
+    </button>
+
+    <script>
+      function backToTop() {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+      }
+    </script>
+
+    <script>
+      let dropdowns = document.querySelectorAll(".navbar .dropdown-toggler");
+      let dropdownIsOpen = false;
+
+      if (dropdowns.length) {
+        dropdowns.forEach((dropdown) => {
+          dropdown.addEventListener("click", (event) => {
+            let target = document.querySelector(
+              `#${event.target.dataset.dropdown}`,
+            );
+
+            if (target) {
+              if (target.classList.contains("show")) {
+                target.classList.remove("show");
+                dropdownIsOpen = false;
+              } else {
+                target.classList.add("show");
+                dropdownIsOpen = true;
+              }
+            }
+          });
+        });
+      }
+
+      // Handle closing dropdowns if a user clicked the body
+      window.addEventListener("mouseup", (event) => {
+        if (dropdownIsOpen) {
+          dropdowns.forEach((dropdownButton) => {
+            let dropdown = document.querySelector(
+              `#${dropdownButton.dataset.dropdown}`,
+            );
+            let targetIsDropdown = dropdown == event.target;
+
+            if (dropdownButton == event.target) {
+              return;
+            }
+
+            if (!targetIsDropdown && !dropdown.contains(event.target)) {
+              dropdown.classList.remove("show");
+            }
+          });
+        }
+      });
+
+      // Open links in mobiles
+      function handleSmallScreens() {
+        document
+          .querySelector(".navbar-toggler")
+          .addEventListener("click", () => {
+            let navbarMenu = document.querySelector(".navbar-menu");
+
+            if (navbarMenu.style.display === "flex") {
+              navbarMenu.style.display = "none";
+              return;
+            }
+
+            navbarMenu.style.display = "flex";
+          });
+      }
+
+      handleSmallScreens();
+    </script>
+  </body>
+  <script src="/public/web/js/demo.js"></script>
+</html>

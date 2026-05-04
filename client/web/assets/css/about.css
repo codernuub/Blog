@@ -1,0 +1,121 @@
+/*ABOUT STYLE START*/
+.about {
+  font-family: Rubik;
+  background-color: #eff7ff;
+  padding: 20px;
+  flex-wrap: wrap;
+  line-height: 65px;
+}
+.about > h3 {
+  padding: 0 0 10px 0;
+  color: #475677;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 38px;
+  line-height: 57px;
+  text-align: center;
+}
+.about > .para {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: space-between;
+  padding: 30px 0;
+  margin: auto;
+}
+
+.about > .para > p {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.95rem;
+  text-align: justify;
+  line-height: 24px;
+  margin: 20px 0;
+  color: #5f6779;
+}
+.about > .para > .thumbnail {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 250px;
+  box-shadow: 1px 1px 10px 0 rgb(0, 0, 0, 0.5);
+}
+.about > .para > .thumbnail > img {
+  width: 100%;
+  aspect-ratio: auto;
+  margin: auto;
+}
+.about > .para > .slider {
+  box-shadow: 1px 1px 10px 0 rgb(0, 0, 0, 0.5);
+  height: fit-content;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+/*ABOUT STYLE END*/
+
+/*CAROUSEL STYLE START*/
+.carousel {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+.slides::-webkit-scrollbar {
+  display: none;
+}
+.slide {
+  display: flex;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.slide img {
+  margin: auto;
+  width: 100%;
+  max-height: 250px;
+  display: block;
+}
+/*CAROUSEL STYLE END*/
+
+@media only screen and (min-width: 700px) {
+  /*ABOUT STYLE START*/
+  .about > .para {
+    max-width: 80%;
+    grid-template-columns: 47.5% 47.5%;
+  }
+  .about > .para > p {
+    margin: auto 0;
+  }
+  
+}
+
+
+@media only screen and (min-width:1500px) {
+  /*ABOUT STYLE START*/
+  .about {
+    padding: 80px;
+  }
+  .about > .para > .thumbnail {
+    height: 350px;
+  }
+  /*ABOUT STYLE END*/
+
+  /*CAROUSEL STYLE START*/
+  .slide img {
+    max-height: 350px;
+  }
+  /*CAROUSEL STYLE END*/
+}

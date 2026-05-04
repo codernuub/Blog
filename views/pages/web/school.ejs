@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <a id="button"></a>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2xcell</title>
+
+    <link rel="shortcut icon" href="/public/web/assets/favicon_io/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/public/web/assets/favicon_io/apple-touch-icon.png" />
+
+    <link rel="stylesheet" href="/public/web/assets/css/students.css" />
+    <link rel="stylesheet" href="/public/web/assets/css/school.css" />
+    <link rel="stylesheet" href="/public/web/assets/css/casourel.css" />
+    <link rel="stylesheet" href="/public/web/assets/css/new.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Merriweather:400,900,900i"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+
+    <%- include("../../partials/web/header") %>
+
+    <menu>
+      <div class="first">
+        <div class="top">
+          <div class="l1">
+            <div class="l1t1">
+              <img src="/public/web/assets/images/s3.png" id="s2" />
+            </div>
+            <div class="l1t2">
+              <p>
+                2xcell brings hybrid learning model for school. The aim is to
+                provide blended learning, bridging the gap between online and
+                the offline learning challenges. Educators are empowered on
+                2xcell by getting the right digital tools they need in the
+                classroom and easy their daily tasks. Comprehensive AI drive
+                analytics provides them the insights on the students regular
+                performance, activities, learning goals and gaps. The analytics
+                helps them to choose the learning model and theories to be used
+                in for the class as a whole and for an individual student in
+                order to incluclate self confidence and love for learning.
+                Digital learning resources, assessment engine, white board
+                tools, lesson planner are provided to equip the school and
+                educators for hybrid classroom and be ready for 21st century
+                challenges.
+              </p>
+            </div>
+          </div>
+          <div class="r1">
+            <img src="/public/web/assets/images/school-min.png" id="top-image" />
+          </div>
+        </div>
+      </div>
+    </menu>
+
+    <div class="us">
+      <img src="/public/web/assets/images/vector.png" />
+    </div>
+
+    <!-- Carousel section  -->
+    <div class="carousel_container">
+      <div class="carousel_container_right">
+        <div class="carousel_background"></div>
+        <div class="carousel">
+        </div>
+      </div>
+      <div class="carousel_container_left">
+        <span>
+          From where will these millions of data points come from and how
+          reliable will be the data?
+        </span>
+        <span>
+          <button type="button" class="carousel_button" onClick="moveLeft()">
+            <img src="/public/web/assets/icon/arrow_left.svg" alt="" />
+          </button>
+          <button type="button" class="carousel_button" onClick="moveRight()">
+            <img src="/public/web/assets/icon/arrow_right.svg" alt="" />
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <div class="fall">
+      <div class="fall1">Why would students fall in love with 2xcell?</div>
+      <div class="fall2"></div>
+    </div>
+
+    <div class="major">
+      <div class="cards">
+        <div class="card" id="c1">
+          <h1>Power packed Resources</h1>
+          <p>
+            Resources assigned by teacher/Top rated resources mapped to
+            intelligence
+          </p>
+        </div>
+        <div class="card" id="c2">
+          <h1>Smart Calendar</h1>
+          <p>
+            On-going / Upcoming / Missed - Sessions / Test / Assignments /
+            Resources assigned.
+          </p>
+        </div>
+        <div class="card" id="c1">
+          <h1>Self Evaluation</h1>
+          <p>
+            Practise Test (Crafted by top rated teachers / Assigned by teacher)
+          </p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card" id="c2">
+          <h1>Preference</h1>
+          <p>Preferred format of resources | Special Request</p>
+        </div>
+        <div class="card" id="c1">
+          <h1>Gamified Learning</h1>
+          <p>Leader Board | Challenges | Targets</p>
+        </div>
+        <div class="card" id="c2">
+          <h1>Analytics</h1>
+          <p>Data-points including feedback by teacher | Anatomy report</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card" id="c1">
+          <h1>Feedback</h1>
+          <p>Post teacher / resource feedback | Support required</p>
+        </div>
+        <div class="card" id="c2">
+          <h1>Learning Path</h1>
+          <p>Suggestive Resources | Faculty | Methodology | Course</p>
+        </div>
+        <div class="card" id="c1">
+          <h1>Rewards</h1>
+          <p>
+            Incentives based on level of engagement | Time spent on platform
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fall3">
+      <div class="fall4"></div>
+      <div class="fall5">Why would teachers fall in love with 2xcell?</div>
+    </div>
+
+    <div class="major2" style="background-color: #ffff">
+      <div class="cards">
+        <div class="card" id="c4">
+          <h1>Personalized</h1>
+          <p>
+            User friendly content creation tools | Templates to weave your own
+            story around the most engaging resources.
+          </p>
+        </div>
+        <div class="card" id="c3">
+          <h1>Powerful assessment tools</h1>
+          <p>
+            Choose from thoughtfully crafted question bank or create your own
+            set of questions in any format (MCQ/Subjective).
+          </p>
+        </div>
+        <div class="card" id="c4">
+          <h1>Self Evaluation</h1>
+          <p>
+            Practise Test (Crafted by top rated teachers /Assigned by teacher)
+          </p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card" id="c3">
+          <h1>Preference</h1>
+          <p>Preferred format of resources | Special Request</p>
+        </div>
+        <div class="card" id="c4">
+          <h1>Gamified Learning</h1>
+          <p>Leader Board | Challenges | Targets</p>
+        </div>
+        <div class="card" id="c3">
+          <h1>Analytics</h1>
+          <p>Data-points including feedback by teacher | Anatomy report</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card" id="c4">
+          <h1>Feedback</h1>
+          <p>Post teacher / resource feedback | Support required</p>
+        </div>
+        <div class="card" id="c3">
+          <h1>Learning Path</h1>
+          <p>Suggestive Resources | Faculty | Methodology | Course</p>
+        </div>
+        <div class="card" id="c4">
+          <h1>Rewards</h1>
+          <p>
+            Incentives based on level of engagement | Time spent on platform
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <%- include("../../partials/web/footer") %>
+
+    <!-- Tawk Plugin -->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/5f086e9f67771f3813c0cc1c/default";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script>
+
+    <!-- Back to top button -->
+    <button class="back_to_top" onClick="backToTop()" title="Back to top">
+      <img src="/public/web/assets/icon/arrow_up.svg" alt="" />
+    </button>
+
+    <script>
+      function backToTop() {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+      }
+    </script>
+
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+    </script>
+
+    <script>
+      let dropdowns = document.querySelectorAll(".navbar .dropdown-toggler");
+      let dropdownIsOpen = false;
+
+      if (dropdowns.length) {
+        dropdowns.forEach((dropdown) => {
+          dropdown.addEventListener("click", (event) => {
+            let target = document.querySelector(
+              `#${event.target.dataset.dropdown}`
+            );
+
+            if (target) {
+              if (target.classList.contains("show")) {
+                target.classList.remove("show");
+                dropdownIsOpen = false;
+              } else {
+                target.classList.add("show");
+                dropdownIsOpen = true;
+              }
+            }
+          });
+        });
+      }
+
+      window.addEventListener("mouseup", (event) => {
+        if (dropdownIsOpen) {
+          dropdowns.forEach((dropdownButton) => {
+            let dropdown = document.querySelector(
+              `#${dropdownButton.dataset.dropdown}`
+            );
+            let targetIsDropdown = dropdown == event.target;
+
+            if (dropdownButton == event.target) {
+              return;
+            }
+
+            if (!targetIsDropdown && !dropdown.contains(event.target)) {
+              dropdown.classList.remove("show");
+            }
+          });
+        }
+      });
+
+      function handleSmallScreens() {
+        document
+          .querySelector(".navbar-toggler")
+          .addEventListener("click", () => {
+            let navbarMenu = document.querySelector(".navbar-menu");
+
+            if (navbarMenu.style.display === "flex") {
+              navbarMenu.style.display = "none";
+              return;
+            }
+
+            navbarMenu.style.display = "flex";
+          });
+      }
+
+      handleSmallScreens();
+    </script>
+
+  
+    <!-- Added missing JS path -->
+    <script src="/public/web/js/school.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,95 @@
+.demo
+{
+    
+    padding: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+.db1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dbox{
+    width: 300px;
+    border: 1px solid #47567711;
+  border-radius: 12px;
+}
+.db{
+ 
+  padding: 10px;
+}
+.db1 h1{
+    font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 45px;
+/* identical to box height */
+
+
+color: #475677;
+
+}
+.db1 span{
+    background: #E5F8F4; 
+    color: #00B592;
+    width: 100px;
+    text-align: center;
+    border-radius: 20px;
+    padding: 3px 10px 3px 10px;
+}
+.db2{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 34px;
+    /* identical to box height */
+    padding-top: 15px;
+    
+    color: #475677;
+}
+.db3{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 60px;
+}
+.grade{
+    font-family: Segoe UI;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 24px;
+/* identical to box height */
+
+
+color: #FFBE58;
+
+}
+.views{
+   
+font-style: normal;
+font-weight: normal;
+font-size: 19px;
+line-height: 23px;
+/* identical to box height */
+font-weight: 500;
+
+color: #7D8597;
+}
+
+
+
+/********************resposive***********************/
+@media only screen and (max-width: 450px) {
+   
+    }
+
+
+
+
+
