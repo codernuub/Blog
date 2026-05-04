@@ -1,0 +1,362 @@
+.fall {
+    display: flex;
+}
+
+.social img {
+    width: 40px;
+}
+
+.fall1 {
+    background-color: #69f5f5;
+    width: 30vw;
+    height: 100px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #475677;
+    height: 150px;
+}
+
+.fall2 {
+    background-color: #EEFDFD;
+    width: 70vw;
+}
+
+#button {
+    display: inline-block;
+    background-color: #FF9800;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s, opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+#button::after {
+    content: "\f077";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff;
+}
+
+#button:hover {
+    cursor: pointer;
+    background-color: #333;
+}
+
+#button:active {
+    background-color: #555;
+}
+
+#button.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/*******************************************************************************************/
+
+.major {
+    background: #FAFAFA;
+    padding: 30px;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    margin: 30px;
+}
+
+.card {
+    width: 370px;
+    padding: 20px;
+    box-shadow: 0px 12px 40px 0px rgb(0 0 0 / 4%);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.04);
+    box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 10%);
+}
+
+.card h1 {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 46px;
+    /* identical to box height */
+    color: #475677;
+}
+
+.card p {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 36px;
+    color: #475677;
+}
+
+#c1 {
+    background: #FFFFFF;
+}
+
+#c2 {
+    background: #b7f5f5b2;
+}
+
+.fall3 {
+    display: flex;
+}
+
+.fall4 {
+    background: #EFF7FF;
+    width: 70vw;
+}
+
+.fall5 {
+    background: #9bc2f8;
+    width: 30vw;
+    height: 100px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #475677;
+    height: 150px;
+}
+
+#c3 {
+    background: #bbd2f3b7;
+}
+
+#c4 {
+    background: #FFFFFF;
+}
+
+.major2 {
+    padding: 30px;
+}
+
+.us {
+    text-align: center;
+}
+
+.us img {
+    width: 60vw;
+}
+
+
+/************************ Carousel section  *********************/
+
+.carousel_container {
+    height: fit-content;
+    background: #F7FBFF;
+    display: grid;
+    grid-template-columns: 75% 25%;
+    column-gap: 2rem;
+    padding: 5rem 2rem;
+    font-size: 1.2em;
+}
+
+.carousel_container_left {
+    display: flex;
+    flex-direction: column;
+    margin-top: -1rem;
+}
+
+.carousel_container_left span:first-child {
+    margin-top: -1.5rem;
+    color: rgba(71, 86, 119, 1);
+}
+
+.carousel_container_left span:nth-child(2) {
+    margin-top: 1.5rem;
+}
+
+.carousel_button {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: none;
+    text-align: center;
+    margin: 0px;
+    box-shadow: 0px 0px 3px #00000052;
+    opacity: 0.83;
+}
+
+.carousel_button img {
+    margin: auto;
+    width: 50%;
+    height: auto;
+}
+
+.carousel_button:first-child {
+    background-color: #FFFFFF;
+}
+
+.carousel_button:nth-child(2) {
+    background-color: rgba(81, 227, 212, 1);
+}
+
+.carousel_button:hover {
+    box-shadow: 0px 0px 5px 1px #00000038;
+}
+
+.carousel_container_right {
+    padding-top: 1rem
+}
+
+.carousel_background {
+    width: 100%;
+    height: 40%;
+    background: rgba(166, 195, 240, 0.27);
+    margin-bottom: -160px;
+    margin-top: 50px;
+}
+
+.carousel {
+    width: 100%;
+    height: 130%;
+    margin: auto;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.carousel_card {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.212);
+    font-size: 0.95em;
+    padding: 2rem 1rem;
+    color: rgba(71, 86, 119, 1);
+    ;
+}
+
+.carousel_card_number {
+    font-weight: bold;
+    font-size: 2.5em;
+    color: #A6C3F0;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/***************************resposive***********************************************/
+
+@media only screen and (max-width: 1025px) {
+    .major {
+        padding: 18px;
+    }
+    .card {
+        width: 200px;
+        padding: 15px;
+    }
+    .carousel_card {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .cards {
+        flex-wrap: wrap;
+    }
+    .carousel_container {
+        display: grid;
+        grid-template-rows: 25% 75%;
+        grid-template-columns: 100%;
+        padding: 20px 0px;
+    }
+    .carousel_container_left {
+        margin-top: 10rem;
+        align-items: center;
+        text-align: center;
+    }
+    .carousel_container_right {
+        margin-top: 6rem;
+        margin-bottom: 3rem;
+    }
+    .us {
+        margin-top: 11rem;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .fall1 {
+        width: 100vw;
+        padding: 10px;
+        font-size: 12px;
+    }
+    .fall2 {
+        width: 0;
+    }
+    .card {
+        width: 100%;
+    }
+    .fall4 {
+        width: 0;
+    }
+    .fall5 {
+        padding: 10px;
+        width: 100vw;
+    }
+    .major {
+        padding: 5px;
+    }
+    .carousel_background {
+        height: 200%;
+    }
+    .carousel_container {
+        padding: 65px 5px 35px 5px;
+    }
+    .carousel_container_right {
+        margin-top: 0rem;
+        margin-bottom: 3rem;
+        padding-top: 4rem;
+    }
+    .carousel {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .carousel_card {
+        width: 80%;
+        min-height: 180px;
+    }
+    .card h1 {
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .card p {
+        font-size: 13px;
+        line-height: 16px;
+    }
+}

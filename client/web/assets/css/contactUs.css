@@ -1,0 +1,191 @@
+/* globe */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 2 column layout  */
+.columnC {
+    float: left;
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+iframe {
+    width:80%;
+    height:250px;
+    border-radius:10px;
+    margin:20px auto;
+}
+
+.rowC:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
+
+
+.colorBack {
+    background: #EBFDFD;
+    text-align: center;
+}
+
+/* main image  */
+.imgContact {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background: #EBFDFD;
+    width: 550px;
+    text-align: center;
+}
+
+/* heading text  */
+.headContact {
+    background: rgba(241, 241, 241, 0.42);
+    color: #475677;
+    font-family: "Poppins";
+    padding: 3rem;
+    width: 100%;
+}
+
+.headContactH1 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-left: 5px;
+}
+
+.headContactH2 {
+    line-height: 105%;
+    font-size: 2.7rem;
+    font-weight: 600;
+}
+
+/* details box */
+.detailsContact {
+    width: 100%;
+    padding: 4rem;
+    background-color: rgba(241, 241, 241, 0.12);
+}
+
+.fas {
+    padding: 5px;
+}
+
+.singleElement {
+    font-family: "Poppins";
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 57px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #475677;
+    cursor: pointer;
+}
+
+.singleElement span {
+    text-align: left;
+}
+
+.iconImage {
+    margin-right: 3rem;
+    width: 20px;
+    height: 20px;
+}
+
+/**address*/
+.detailsContact {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.address {
+    width: 45%;
+    padding: 20px;
+    background: #fff;
+    border-top: 4px solid #475677;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.080), -1px -1px rgba(0, 0, 0, 0.080);
+}
+
+i {
+    padding: 0 !important;
+    font-size: 0.9rem;
+    margin:auto;
+}
+
+.address>h1 {
+    font-size: 1.1rem;
+    color: #475677;
+}
+
+.address>p {
+    display:flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0;
+    color: grey;
+    font-size: 0.9rem;
+}
+
+.address>p>span{
+    margin:0 10px 0px 10px;
+}
+
+.address>p>a{
+    margin:0;
+    cursor: pointer;
+}
+.address>p>a>img{
+    width:20px;
+}
+
+.address>span {
+    display: block;
+    margin-top: 10px;
+}
+
+.address>span>a {
+    color: grey !important;
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width: 600px) {
+
+    /* 2 column layout */
+    .columnC {
+        width: 100%;
+    }
+
+    .headContact {
+        font-size: 50%;
+    }
+
+    .detailsContact {
+        padding: 2rem;
+    }
+
+    .imgContact {
+        padding-top: 2rem;
+        width: 100vw;
+    }
+
+    .singleElement {
+
+        font-size: 1rem;
+
+        line-height: 37px;
+
+    }
+}
+
+@media screen and (max-width:800px) {
+    .address {
+        width:100%;
+        margin: 20px 0;
+    }
+}

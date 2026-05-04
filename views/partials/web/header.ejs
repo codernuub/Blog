@@ -1,0 +1,42 @@
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggler" data-toggle="open-navbar1">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="/">
+        <h4>
+          <img src="/public/web/assets/images/new-logo.png" width="80px" />
+        </h4>
+      </a>
+    </div>
+
+    <div class="navbar-menu" id="open-navbar1">
+      <ul class="navbar-nav">
+        <li class="<%= currentPath === '/' ? 'active' : '' %>">
+          <a href="/">Home</a>
+        </li>
+        <li class="<%= currentPath === '/school' ? 'active' : '' %>">
+          <a href="/school">Schools</a>
+        </li>
+        <li class="<%= currentPath === '/principal' ? 'active' : '' %>">
+          <a href="/principal">Principal</a>
+        </li>
+        <li class="<%= currentPath === '/students' ? 'active' : '' %>">
+          <a href="/students">Students</a>
+        </li>
+        <li><a href="http://blog.2xcell.in/">Blog</a></li>
+        <li class="<%= currentPath === '/demo' ? 'active' : '' %>">
+          <a href="/demo">Demo</a>
+        </li>
+        <li><a href="/#about">About</a></li>
+        <li class="<%= currentPath === '/contact' ? 'active' : '' %>">
+          <a href="/contact">Contact Us</a>
+        </li>
+        <li><a href="https://auth.2xcell.in/" id="login">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
