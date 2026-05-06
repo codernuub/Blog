@@ -22,6 +22,7 @@
     justify-content: center;
     padding: 16px;
     animation: evFadeIn 0.25s ease;
+    overflow-y: auto;
   }
 
   .ev-contact-overlay.ev-active {
@@ -30,7 +31,7 @@
 
   .ev-contact-modal {
     width: 100%;
-    max-width: 430px;
+    max-width: 820px;
     background: var(--card-bg);
     border-radius: 20px;
     overflow: hidden;
@@ -42,7 +43,7 @@
   }
 
   .ev-contact-header {
-    padding: 22px 22px 14px;
+    padding: 26px 28px 18px;
     background: linear-gradient(
       135deg,
       var(--primary-color),
@@ -52,27 +53,28 @@
   }
 
   .ev-contact-title {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 700;
-    margin: 0 0 6px;
+    margin: 0 0 8px;
     letter-spacing: -0.4px;
     color: white !important;
   }
 
   .ev-contact-subtitle {
     margin: 0;
-    opacity: 0.92;
-    line-height: 1.45;
-    font-size: 13px;
+    opacity: 0.95;
+    line-height: 1.6;
+    font-size: 14px;
     color: rgba(255, 255, 255, 0.92);
+    max-width: 700px;
   }
 
   .ev-contact-close {
     position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 36px;
-    height: 36px;
+    top: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     border: none;
     background: rgba(255, 255, 255, 0.18);
@@ -93,7 +95,7 @@
   }
 
   .ev-contact-body {
-    padding: 20px 22px 24px;
+    padding: 26px 28px 30px;
     background: var(--bg-color);
   }
 
@@ -101,7 +103,18 @@
     width: 100% !important;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
+    padding: 0 !important;
+  }
+
+  .ev-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .ev-full-width {
+    grid-column: 1 / -1;
   }
 
   .ev-contact-group {
@@ -120,7 +133,8 @@
   }
 
   .ev-contact-input,
-  .ev-contact-textarea {
+  .ev-contact-textarea,
+  .ev-contact-select {
     width: 100%;
     border: 1px solid var(--border-color);
     background: white;
@@ -135,20 +149,26 @@
     font-family: inherit;
   }
 
+  .ev-contact-select {
+    appearance: none;
+    cursor: pointer;
+  }
+
   .ev-contact-input::placeholder,
   .ev-contact-textarea::placeholder {
     color: #94a3b8;
   }
 
   .ev-contact-input:focus,
-  .ev-contact-textarea:focus {
+  .ev-contact-textarea:focus,
+  .ev-contact-select:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 4px rgba(0, 158, 127, 0.12);
   }
 
   .ev-contact-textarea {
     resize: vertical;
-    min-height: 90px;
+    min-height: 100px;
   }
 
   .ev-contact-phone-wrapper {
@@ -171,11 +191,15 @@
     background: #f1f5f9;
     font-weight: 600;
     font-size: 14px;
-    color: var(--text-dark);
     border-right: 1px solid var(--border-color);
     white-space: nowrap;
     line-height: 1;
+    color: var(--text-dark) !important;
   }
+
+   .ev-contact-group option {
+     color: var(--text-dark) !important;
+   }
 
   .ev-contact-phone {
     border: none !important;
@@ -214,7 +238,7 @@
   }
 
   .ev-contact-submit {
-    height: 48px;
+    height: 50px;
     border: none;
     border-radius: 12px;
     background: linear-gradient(
@@ -230,7 +254,7 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    margin: 0 !important;
+    margin: 6px 0 0 !important;
   }
 
   .ev-contact-submit:hover {
@@ -281,33 +305,45 @@
     }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .ev-contact-overlay {
       padding: 12px;
+      align-items: flex-start;
     }
 
     .ev-contact-modal {
       max-width: 100%;
       border-radius: 18px;
+      margin: 20px 0;
     }
 
     .ev-contact-header {
-      padding: 20px 18px 14px;
+      padding: 22px 18px 16px;
     }
 
     .ev-contact-body {
-      padding: 18px 18px 22px;
+      padding: 20px 18px 24px;
     }
 
     .ev-contact-title {
-      font-size: 20px;
+      font-size: 22px;
     }
 
     .ev-contact-subtitle {
-      font-size: 12px;
+      font-size: 13px;
+    }
+
+    .ev-contact-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .ev-full-width {
+      grid-column: auto;
     }
   }
 </style>
+
 <div class="ev-contact-overlay" id="evContactPopup">
   <div class="ev-contact-modal">
     <button
@@ -319,9 +355,12 @@
     </button>
 
     <div class="ev-contact-header">
-      <h2 class="ev-contact-title">Get In Touch</h2>
+      <h2 class="ev-contact-title">Book a Demo Session</h2>
+
       <p class="ev-contact-subtitle">
-        Have questions or want to discuss something? Fill out the form and our team will contact you shortly.
+        Explore our learning solutions for your school. Share your details and
+        our academic team will connect with you for a personalized demo of
+        modules, assessments, worksheets, and more.
       </p>
     </div>
 
@@ -332,64 +371,195 @@
           id="evContactMessage"
         ></div>
 
-        <div class="ev-contact-group">
-          <label class="ev-contact-label">Full Name</label>
-
-          <input
-            type="text"
-            name="name"
-            class="ev-contact-input"
-            placeholder="Enter your full name"
-            maxlength="60"
-          />
-
-          <span class="ev-contact-error"></span>
-        </div>
-
-        <div class="ev-contact-group">
-          <label class="ev-contact-label">Email Address</label>
-
-          <input
-            type="email"
-            name="email"
-            class="ev-contact-input"
-            placeholder="Enter your email address"
-            maxlength="100"
-          />
-
-          <span class="ev-contact-error"></span>
-        </div>
-
-        <div class="ev-contact-group">
-          <label class="ev-contact-label">Phone Number</label>
-
-          <div class="ev-contact-phone-wrapper">
-            <div class="ev-contact-country">🇮🇳 +91</div>
+        <div class="ev-contact-grid">
+          <div class="ev-contact-group">
+            <label class="ev-contact-label">Full Name</label>
 
             <input
-              type="tel"
-              name="phone"
-              class="ev-contact-input ev-contact-phone"
-              placeholder="9876543210"
-              maxlength="10"
-              inputmode="numeric"
+              type="text"
+              name="name"
+              class="ev-contact-input"
+              placeholder="Enter full name"
+              maxlength="60"
             />
+
+            <span class="ev-contact-error"></span>
           </div>
 
-          <span class="ev-contact-error"></span>
-        </div>
+          <div class="ev-contact-group">
+            <label class="ev-contact-label">School Name</label>
 
-        <div class="ev-contact-group">
-          <label class="ev-contact-label">Message</label>
+            <input
+              type="text"
+              name="school"
+              class="ev-contact-input"
+              placeholder="Enter school name"
+              maxlength="120"
+            />
 
-          <textarea
-            name="message"
-            class="ev-contact-textarea"
-            placeholder="Write your message here..."
-            maxlength="1000"
-          ></textarea>
+            <span class="ev-contact-error"></span>
+          </div>
 
-          <span class="ev-contact-error"></span>
+          <div class="ev-contact-group">
+            <label class="ev-contact-label">Email Address</label>
+
+            <input
+              type="email"
+              name="email"
+              class="ev-contact-input"
+              placeholder="Enter email address"
+              maxlength="100"
+            />
+
+            <span class="ev-contact-error"></span>
+          </div>
+
+          <div class="ev-contact-group">
+            <label class="ev-contact-label">Phone Number</label>
+
+            <div class="ev-contact-phone-wrapper">
+              <div class="ev-contact-country">🇮🇳 +91</div>
+
+              <input
+                type="tel"
+                name="phone"
+                class="ev-contact-input ev-contact-phone"
+                placeholder="9876543210"
+                maxlength="10"
+                inputmode="numeric"
+              />
+            </div>
+
+            <span class="ev-contact-error"></span>
+          </div>
+
+          <div class="ev-contact-group">
+            <label class="ev-contact-label">State</label>
+
+            <select
+              name="state"
+              class="ev-contact-select"
+            >
+              <option value="">Select State</option>
+
+              <option>Andhra Pradesh</option>
+              <option>Arunachal Pradesh</option>
+              <option>Assam</option>
+              <option>Bihar</option>
+              <option>Chhattisgarh</option>
+              <option>Goa</option>
+              <option>Gujarat</option>
+              <option>Haryana</option>
+              <option>Himachal Pradesh</option>
+              <option>Jharkhand</option>
+              <option>Karnataka</option>
+              <option>Kerala</option>
+              <option>Madhya Pradesh</option>
+              <option>Maharashtra</option>
+              <option>Manipur</option>
+              <option>Meghalaya</option>
+              <option>Mizoram</option>
+              <option>Nagaland</option>
+              <option>Odisha</option>
+              <option>Punjab</option>
+              <option>Rajasthan</option>
+              <option>Sikkim</option>
+              <option>Tamil Nadu</option>
+              <option>Telangana</option>
+              <option>Tripura</option>
+              <option>Uttar Pradesh</option>
+              <option>Uttarakhand</option>
+              <option>West Bengal</option>
+
+              <option>Andaman and Nicobar Islands</option>
+              <option>Chandigarh</option>
+              <option>Dadra and Nagar Haveli and Daman and Diu</option>
+              <option>Delhi</option>
+              <option>Jammu and Kashmir</option>
+              <option>Ladakh</option>
+              <option>Lakshadweep</option>
+              <option>Puducherry</option>
+            </select>
+
+            <span class="ev-contact-error"></span>
+          </div>
+
+          <div class="ev-contact-group">
+            <label class="ev-contact-label">City</label>
+
+            <input
+              type="text"
+              name="city"
+              class="ev-contact-input"
+              placeholder="Enter city"
+              maxlength="80"
+            />
+
+            <span class="ev-contact-error"></span>
+          </div>
+
+          <div class="ev-contact-group">
+            <label class="ev-contact-label">Grade</label>
+
+            <select
+              name="grade"
+              class="ev-contact-select"
+            >
+              <option value="">Select Grade</option>
+
+              <option value="1">Grade 1</option>
+              <option value="2">Grade 2</option>
+              <option value="3">Grade 3</option>
+              <option value="4">Grade 4</option>
+              <option value="5">Grade 5</option>
+              <option value="6">Grade 6</option>
+              <option value="7">Grade 7</option>
+              <option value="8">Grade 8</option>
+              <option value="9">Grade 9</option>
+              <option value="10">Grade 10</option>
+              <option value="11">Grade 11</option>
+              <option value="12">Grade 12</option>
+            </select>
+
+            <span class="ev-contact-error"></span>
+          </div>
+
+          <div class="ev-contact-group">
+            <label class="ev-contact-label">Module</label>
+
+            <select
+              name="module"
+              class="ev-contact-select"
+            >
+              <option value="">Select Module</option>
+
+              <option value="Video Modules">Video Modules</option>
+              <option value="Worksheets">Worksheets</option>
+              <option value="Activities">Activities</option>
+              <option value="Competency-Based Assessments">
+                Competency-Based Assessments
+              </option>
+              <option value="Textbooks">Textbooks</option>
+              <option value="Practice Papers">
+                Practice Papers & Previous Year Question Papers
+              </option>
+            </select>
+
+            <span class="ev-contact-error"></span>
+          </div>
+
+          <div class="ev-contact-group ev-full-width">
+            <label class="ev-contact-label">Message</label>
+
+            <textarea
+              name="message"
+              class="ev-contact-textarea"
+              placeholder="Tell us about your requirements..."
+              maxlength="1000"
+            ></textarea>
+
+            <span class="ev-contact-error"></span>
+          </div>
         </div>
 
         <button
@@ -397,7 +567,7 @@
           class="ev-contact-submit"
           id="evContactSubmit"
         >
-          Submit Inquiry
+          Request Demo
         </button>
       </form>
     </div>
@@ -472,6 +642,11 @@
         isValid = false;
       }
 
+      if (!data.school || data.school.trim().length < 2) {
+        setError(form.school, "Please enter school name");
+        isValid = false;
+      }
+
       const emailRegex =
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -487,6 +662,27 @@
           form.phone,
           "Please enter a valid 10-digit Indian phone number"
         );
+
+        isValid = false;
+      }
+
+      if (!data.state) {
+        setError(form.state, "Please select state");
+        isValid = false;
+      }
+
+      if (!data.city || data.city.trim().length < 2) {
+        setError(form.city, "Please enter city");
+        isValid = false;
+      }
+
+      if (!data.grade) {
+        setError(form.grade, "Please select grade");
+        isValid = false;
+      }
+
+      if (!data.module) {
+        setError(form.module, "Please select module");
         isValid = false;
       }
 
@@ -495,6 +691,7 @@
           form.message,
           "Message should be at least 10 characters"
         );
+
         isValid = false;
       }
 
@@ -512,8 +709,13 @@
 
       const formData = {
         name: form.name.value.trim(),
+        school: form.school.value.trim(),
         email: form.email.value.trim(),
         phone: form.phone.value.trim(),
+        state: form.state.value,
+        city: form.city.value.trim(),
+        grade: form.grade.value,
+        module: form.module.value,
         message: form.message.value.trim(),
       };
 
@@ -523,6 +725,7 @@
 
       try {
         submitBtn.disabled = true;
+
         submitBtn.innerHTML =
           '<span class="ev-contact-loader"></span> Sending...';
 
@@ -545,7 +748,7 @@
         showMessage(
           "success",
           result.message ||
-            "Your inquiry has been submitted successfully."
+            "Demo request submitted successfully."
         );
 
         form.reset();
@@ -561,7 +764,7 @@
         );
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = "Submit Inquiry";
+        submitBtn.innerHTML = "Request Demo";
       }
     });
   })();

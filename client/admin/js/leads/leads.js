@@ -21,7 +21,7 @@ let state = {
 function handleState(text) {
   if (text) {
     leadsState.remove();
-    leadsEl.remove() 
+    leadsEl.remove();
     container.innerHTML = `<p class="nothing">${text}</p>`;
   } else {
     leadsState.remove();
@@ -36,19 +36,31 @@ function parseTemp(temp) {
 
 function renderLeads(leads) {
   let listStr = leads.map((lead) => leadTemp(lead));
-  leadsEl.innerHTML = `<table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Contact</th>
-        <th>Message</th>
-        <th>Status</th>
-        <th>Date</th>
-      </tr>
-    </thead>
 
-    <tbody>${listStr.join("")}</tbody> <!-- IMPORTANT -->
-  </table>`;
+  leadsEl.innerHTML = `
+  <div class="lead-table-wrapper">
+    
+    <table class="lead-table">
+      <thead>
+        <tr>
+          <th>School / Name</th>
+          <th>Contact</th>
+          <th>Location</th>
+          <th>Grade</th>
+          <th>Module</th>
+          <th>Message</th>
+          <th>Status</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        ${listStr.join("")}
+      </tbody>
+    </table>
+
+  </div>
+  `;
 }
 
 function renderLeadCounts(count = 0) {
@@ -222,13 +234,10 @@ async function getLeads(page = 1) {
     url.searchParams.set("page", page);
     url.searchParams.set("limit", state.limit);
 
-    const raw = await fetch(
-      `/api/v1/contacts${url.search}`,
-      {
-        method: "GET",
-        credentials: "include",
-      }
-    );
+    const raw = await fetch(`/api/v1/contacts${url.search}`, {
+      method: "GET",
+      credentials: "include",
+    });
 
     const res = await raw.json();
 
