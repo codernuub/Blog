@@ -1,0 +1,44 @@
+<style>
+  .ev-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 42px;
+    padding: 0 20px;
+    margin:20px 0 !important;
+    border: none;
+    border-radius: 40px;
+    background:linear-gradient(135deg, #23f7e1 0%, #8494ff 150%);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Poppins';
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 10px 24px rgba(0, 158, 127, 0.18);
+  }
+
+  .ev-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(0, 158, 127, 0.24);
+  }
+
+  .ev-cta-btn:active {
+    transform: scale(0.98);
+  }
+
+  .ev-cta-icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+</style>
+
+<button
+  type="button"
+  class="ev-cta-btn"
+  onclick="openEvContactPopup()"
+>
+  <span>Contact Us</span>
+</button>

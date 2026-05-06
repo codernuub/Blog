@@ -3,35 +3,36 @@ class APIFeatures {
   constructor(query, queryString) {
     this.query = query;
     this.queryString = queryString;
+    this.queryObj = {};
   }
 
   filter() {
-    let queryObj = { ...this.queryString };
-    ["sort", "page", "limit", "fields", "export"].forEach((prop) => delete queryObj[prop]);
-    let queryStr = JSON.stringify(queryObj).replace(/\b(gte|gt|lte|lt|regex|options|or|and|in)\b/g, (match) => `$${match}`);
+    this.queryObj = { ...this.queryString };
+    ["sort", "page", "limit", "fields", "export"].forEach((prop) => delete this.queryObj[prop]);
+    let queryStr = JSON.stringify(this.queryObj).replace(/\b(gte|gt|lte|lt|regex|options|or|and|in)\b/g, (match) => `$${match}`);
 
-    queryObj = JSON.parse(queryStr);
+    this.queryObj = JSON.parse(queryStr);
     ['$or', '$and'].forEach(oper => {
       const query = [];
-      if (queryObj[oper]) {
-        for (let prop in queryObj[oper]) {
-          query.push({ [prop]: queryObj[oper][prop] });
+      if (this.queryObj[oper]) {
+        for (let prop in this.queryObj[oper]) {
+          query.push({ [prop]: this.queryObj[oper][prop] });
         }
-        queryObj[oper] = query;
+        this.queryObj[oper] = query;
       }
     });
 
     if (this.queryString.lng && this.queryString.lat) {
       const radius = this.queryString.distance ? Number.parseFloat(this.queryString.distance) : 0.5;
       const radian = radius / 6378.1;
-      queryObj["location"] = {
+      this.queryObj["location"] = {
         $geoWithin: {
           $centerSphere: [[Number.parseFloat(this.queryString.lng), Number.parseFloat(this.queryString.lat)], radian]
         }
       };
     }
 
-    this.query = this.query.find(queryObj);
+    this.query = this.query.find(this.queryObj);
     return this;
   }
 

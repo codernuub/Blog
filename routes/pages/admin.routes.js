@@ -57,6 +57,12 @@ router.get(
   },
 );
 
+router.get("/leads", authController.authorizePage(["admin"]), (req, res) => {
+  return res.render("pages/admin/leads", {
+    user: req.user,
+  });
+});
+
 router.get("/users", authController.authorizePage(["admin"]), (req, res) => {
   return res.render("pages/admin/users", {
     user: req.user,

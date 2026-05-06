@@ -15,6 +15,7 @@ const authRoutes = require("./routes/apis/authRoutes");
 const userRoutes = require("./routes/apis/userRoutes");
 const categoryRoutes = require("./routes/apis/categoryRoutes");
 const blogRoutes = require("./routes/apis/blogRoutes");
+const contactRoutes = require("./routes/apis/contact.routes");
 //page routes
 const adminRoutes = require("./routes/pages/admin.routes");
 const webRoutes = require("./routes/pages/web.routes");
@@ -31,24 +32,11 @@ app.set("view engine", "ejs");
 app.use("/", webRoutes);
 app.use("/dashboard", adminRoutes);
 
-/*app.get(
-  "/:title",
-  categoryController.fetchActiveCategories,
-  blogController.fetchActiveBlog,
-  (req, res) => {
-    if (!req.blog) return res.render("pages/404");
-
-    return res.render("pages/blog", {
-      categories: req.categories,
-      blog: req.blog || {},
-    });
-  },
-);*/
-
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/categories", categoryRoutes);
 app.use("/api/v1/blogs", blogRoutes);
+app.use("/api/v1/contacts", contactRoutes);
 
 //Handle unhandled routes
 app.all("*", (req, res, next) => {

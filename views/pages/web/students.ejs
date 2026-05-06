@@ -6,28 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO START -->
-    <title>2xcell Students | Hybrid Learning, AI Education & Personalized Classes</title>
+    <title>
+      2xcell Students | Hybrid Learning, AI Education & Personalized Classes
+    </title>
 
-    <meta name="description" content="Explore 2xcell student programs including hybrid classrooms, AI learning, coding, and personalized online education. Improve learning with smart analytics and modern tools." />
+    <meta
+      name="description"
+      content="Explore 2xcell student programs including hybrid classrooms, AI learning, coding, and personalized online education. Improve learning with smart analytics and modern tools."
+    />
 
-    <meta name="keywords" content="2xcell students, hybrid learning, AI education India, online learning platform, personalized learning, coding for students, computational thinking, student analytics" />
+    <meta
+      name="keywords"
+      content="2xcell students, hybrid learning, AI education India, online learning platform, personalized learning, coding for students, computational thinking, student analytics"
+    />
 
     <meta name="author" content="2xcell" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="2xcell Students Learning Platform" />
-    <meta property="og:description" content="Hybrid classrooms, AI-driven learning, and personalized education for students." />
+    <meta
+      property="og:description"
+      content="Hybrid classrooms, AI-driven learning, and personalized education for students."
+    />
     <meta property="og:image" content="/public/web/assets/images/student.png" />
     <meta property="og:type" content="website" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="2xcell Students Learning Platform" />
-    <meta name="twitter:description" content="Smart hybrid learning and AI-powered education for students." />
+    <meta
+      name="twitter:description"
+      content="Smart hybrid learning and AI-powered education for students."
+    />
     <!-- SEO END -->
 
-    <link rel="shortcut icon" href="/public/web/assets/favicon_io/favicon-16x16.png" />
-    <link rel="apple-touch-icon" href="/public/web/assets/favicon_io/apple-touch-icon.png" />
+    <link
+      rel="shortcut icon"
+      href="/public/web/assets/favicon_io/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="/public/web/assets/favicon_io/apple-touch-icon.png"
+    />
 
     <link rel="stylesheet" href="/public/web/assets/css/header.css" />
     <link rel="stylesheet" href="/public/web/assets/css/new.css" />
@@ -43,7 +63,6 @@
   </head>
 
   <body>
-
     <%- include("../../partials/web/header") %>
 
     <menu>
@@ -56,6 +75,7 @@
               the student and plug the right blend of resources & methodology to
               help him become a Super Learner.
             </p>
+            <%- include('../../partials/web/cta-button.ejs') %>
           </div>
         </div>
 
@@ -107,22 +127,31 @@
         <p>&#8226; Synchronous/asynchronous communication opportunities.</p>
         <p>&#8226; The freedom of academic exploration anytime at own pace</p>
         <p>&#8226; Create and source learning content in various formats</p>
-        <p>&#8226; Revisiting and practicing learning materials any number of times.</p>
+        <p>
+          &#8226; Revisiting and practicing learning materials any number of
+          times.
+        </p>
         <p>&#8226; Teacher can redesign course map as many time as required.</p>
         <p>&#8226; Monitoring of individual students</p>
-        <p>&#8226; Customized learning plans for individual students basis their interest and pace of learning</p>
+        <p>
+          &#8226; Customized learning plans for individual students basis their
+          interest and pace of learning
+        </p>
         <p>&#8226; Efficient use of resources both offline and online</p>
         <p>&#8226; Immediate feedback is available to students</p>
         <p>&#8226; Faster and reliable communication in the classroom</p>
         <p>&#8226; Posting and answering doubts by all students,</p>
-        <p>&#8226; Effective participation of all learners in discussion and debates</p>
+        <p>
+          &#8226; Effective participation of all learners in discussion and
+          debates
+        </p>
         <p>&#8226; Individual goals can be easily setup</p>
       </div>
     </div>
 
     <!-- Remaining sections unchanged but paths fixed -->
     <!-- (ALL content preserved exactly, just path + structure fixes applied) -->
-     <div class="pbox">
+    <div class="pbox">
       <div class="pricing">
         <h2>Our Pricing</h2>
 
@@ -184,7 +213,8 @@
       </div>
     </div>
 
-    <%- include("../../partials/web/footer") %>
+    <%- include("../../partials/web/footer") %> <%-
+    include('../../partials/web/lead-form.ejs') %>
 
     <!-- Tawk Plugin -->
     <script type="text/javascript">
@@ -309,6 +339,5 @@
         document.getElementById("course_section_3").classList.remove("hidden");
       });
     </script>
-
   </body>
 </html>

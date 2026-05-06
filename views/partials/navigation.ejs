@@ -1,42 +1,102 @@
-<div class="lrp">
+<div class="sidebar">
 
+  <!-- Profile -->
   <div class="profile">
-    <% if (user.profile) { %>
-      <img src="<%=user.profile%>" alt="admin" />
-      <% }else{%>
-        <img src="/public/images/default-profile.jfif" alt="admin" />
-        <%}%>
+  <img src="<%= user.profile || '/public/images/default-profile.jfif' %>" />
 
-          <p>
-            <%=user.name%>
-          </p>
+  <div class="profile-info">
+    <p class="name"><%= user.name %></p>
+    <span class="role"><%= user.role %></span>
   </div>
+</div>
 
+  <!-- Navigation -->
   <nav>
 
-    <div class="nav-sec">
+    <div class="nav-section">
+      <p class="section-title">Account</p>
       <ul>
-        <li><i class="icofont-user"></i>&nbsp;<a href="/dashboard/profile">Profile</a></li>
+        <li>
+          <a href="/dashboard/profile">
+            <i class="icofont-user"></i>
+            <span>Profile</span>
+          </a>
+        </li>
       </ul>
     </div>
 
-    <div class="nav-sec">
+    <div class="nav-section">
+      <p class="section-title">Content</p>
       <ul>
-        <li><i class="icofont-edit"></i>&nbsp;<a href="/dashboard/blogs/create">Create Blog</a></li>
-        <li><i class="icofont-blogger"></i>&nbsp;<a href="/dashboard/blogs">Blogs</a></li>
-        <% if (user.role==="admin" ) { %>
-          <li><i class="icofont-list"></i>&nbsp;<a href="/dashboard/categories">Categories</a></li>
-          <%}%>
+        <li>
+          <a href="/dashboard/blogs/create">
+            <i class="icofont-edit"></i>
+            <span>Create Blog</span>
+          </a>
+        </li>
+        <li>
+          <a href="/dashboard/blogs">
+            <i class="icofont-blogger"></i>
+            <span>Blogs</span>
+          </a>
+        </li>
+
+        <% if (user.role==="admin") { %>
+        <li>
+          <a href="/dashboard/categories">
+            <i class="icofont-list"></i>
+            <span>Categories</span>
+          </a>
+        </li>
+        <% } %>
       </ul>
     </div>
 
-    <% if (user.role==="admin" ) { %>
-      <div class="nav-sec">
-        <ul>
-          <li><i class="icofont-users-alt-5"></i>&nbsp;<a href="/dashboard/users">Users</a></li>
-        </ul>
-      </div>
-      <%}%>
+    
+
+    <% if (user.role==="admin") { %>
+      <div class="nav-section">
+  <p class="section-title">Leads</p>
+  <ul>
+    <li>
+      <a href="/dashboard/leads">
+        <i class="icofont-envelope"></i>
+        <span>All Leads</span>
+      </a>
+    </li>
+    <li>
+      <a href="/dashboard/leads?status=pending">
+        <i class="icofont-check-circled"></i>
+        <span>Pending</span>
+      </a>
+    </li>
+    <li>
+  <a href="/dashboard/leads?status=converted">
+    <i class="icofont-verification-check"></i>
+    <span>Converted</span>
+  </a>
+</li>
+
+<li>
+  <a href="/dashboard/leads?status=rejected">
+    <i class="icofont-ban"></i>
+    <span>Rejected</span>
+  </a>
+</li>
+  </ul>
+</div>
+    <div class="nav-section">
+      <p class="section-title">Management</p>
+      <ul>
+        <li>
+          <a href="/dashboard/users">
+            <i class="icofont-users-alt-5"></i>
+            <span>Users</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <% } %>
 
   </nav>
 

@@ -1,10 +1,4 @@
-:root {
-  --primary-color: #000000;
-  --heading-color: #54e3d5;
-  --secondary-color: #54e3d530;
-  --bg-color: #54e3d510;
-  --grey: #a6a6a6;
-}
+
 
 .up > .upl > .item {
   margin-left: 10px;
@@ -18,3 +12,5 @@
 .up > .upr {
   text-transform: capitalize;
 }
+
+

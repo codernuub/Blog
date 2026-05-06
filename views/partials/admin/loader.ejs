@@ -1,0 +1,49 @@
+<style>
+  .ev-loader-wrap {
+    width: 100%;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .ev-loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .ev-loader-spinner {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 4px solid rgba(0, 158, 127, 0.12);
+    border-top-color: #009e7f;
+    animation: evLoaderSpin 0.8s linear infinite;
+  }
+
+  .ev-loader-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b7280;
+    letter-spacing: 0.2px;
+  }
+
+  @keyframes evLoaderSpin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<div class="ev-loader-wrap">
+  <div class="ev-loader">
+    <div class="ev-loader-spinner"></div>
+
+    <p class="ev-loader-text">
+      <%= text || 'Loading data...' %>
+    </p>
+  </div>
+</div>
