@@ -55,39 +55,67 @@ function leadTemp(lead) {
   return `
   <tr class="lead-row" id="lead_${lead._id}">
     
-    <td><strong>${lead.name}</strong></td>
+    <td>
+      <div class="lead-user">
+        <strong>${lead.name}</strong>
+
+        <span class="lead-school">
+          ${lead.school || "-"}
+        </span>
+      </div>
+    </td>
 
     <td>
       <div class="contact-info">
         <span>${lead.email}</span>
-        <span>${lead.phone}</span>
+        <span>+91 ${lead.phone || "-"}</span>
       </div>
     </td>
 
-    <td class="msg">${lead.message}</td>
+    <td>
+      <div class="lead-location">
+        <strong>${lead.city || "-"}</strong>
 
-   <td class="status-cell" onclick="initStatusPopup('${lead._id}', '${lead.status}')">
-  <span class="lead-status ${lead.status}">
-    ${lead.status}
-  
-  <i class="icofont-ui-edit edit-icon"></i>
-  </span>
+        <span>${lead.state || "-"}</span>
+      </div>
+    </td>
 
-</td>
+    <td class="lead-grade">
+          Grade ${lead.grade || "-"}
+        
+       
+   
+    </td>
 
-    <td>${formatDate(lead.createdAt)}</td>
+     <td class="lead-module">
+          ${lead.module || "-"}
+        </td>
 
-     <!--<td class="actions">
-     <span onclick="toggleFollowups('${lead._id}')">View</span>
-      <span onclick="initStatusPopup('${lead._id}', '${lead.status}')">Status</span>
-      <span onclick="initFollowupPopup('${lead._id}')">+Follow</span>
-    </td>-->
+    <td class="msg">
+      ${lead.message || "-"}
+    </td>
 
+    <td
+      class="status-cell"
+      onclick="initStatusPopup('${lead._id}', '${lead.status}')"
+    >
+      <span class="lead-status ${lead.status}">
+        ${lead.status}
+
+        <i class="icofont-ui-edit edit-icon"></i>
+      </span>
+    </td>
+
+    <td>
+      ${formatDate(lead.createdAt)}
+    </td>
   </tr>
 
   ${followUpRowTemp(lead)}
   `;
 }
+
+
 
 function followUpRowTemp(lead) {
   const followups = lead.followUps?.length
