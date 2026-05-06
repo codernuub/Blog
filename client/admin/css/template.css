@@ -1,113 +1,189 @@
-/*CSS for all pages of admin*/
-:root {
-  --primary-color: #000000;
-  --heading-color: #54e3d5;
-  --secondary-color: #54e3d530;
-  --bg-color: #54e3d510;
-  --grey: #a6a6a6;
-}
-
+/* Base */
 html {
   width: 100%;
   height: 100%;
-  padding: 0;
   margin: 0;
   font-family: "Poppins";
-  display: flex;
-  background-color: var(--secondary-color);
-  user-select: none;
+  color: var(--text-dark);
+  background: #f5f7fb;
 }
 
 body {
   width: 100%;
   height: 100%;
-  padding: 0;
-  margin: auto;
-  background: #fff;
+  margin: 0;
   display: flex;
-  flex-direction: column;
   overflow: hidden;
 }
 
-a {
-  text-decoration: none;
-  color: var(--primary-color);
-  white-space: nowrap;
-}
-
-a:hover {
-  color: #222;
-}
-
-.up {
-  width: 98%;
-  height:6%;
-  padding: 1%;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--secondary-color);
-  background-color: var(--heading-color);
-  overflow: hidden;
-  color: #fff;
-}
-
-.up>.upr {
-  margin: auto 0;
-}
-
-.up>.upl {
-  margin: auto 0;
-}
-
+/* Layout */
 .lp {
   width: 100%;
-  height: 92%;
-  padding: 0;
-  margin: 0;
-  flex: 1;
+  height: 100%;
   display: flex;
 }
 
-.lp>.lrp {
-  width: 18%;
-  padding: 0;
-  border-right: 1px solid var(--secondary-color);
-}
-
-.lp>.llp {
-  width: 100%;
+/* Sidebar */
+.lp > .lrp {
+  width: 240px;
+  min-width: 240px;
+  background: #fff;
+  border-right: 1px solid #eee;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  background-color: #eee;
-  border-radius: 0 0 10px 0;
 }
 
-.lp>.llp>.head {
-  width: 97%;
-  height: fit-content;
-  padding: 1.5%;
+/* Main Content */
+.lp > .llp {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f5f7fb;
+  overflow: hidden;
+}
+
+/* Header */
+.lp > .llp > .head {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
   display: flex;
   justify-content: space-between;
-  color: var(--primary-color);
-  background-color: #fff;
+  align-items: center;
+
+  padding: 12px 20px;
+  background: var(--primary-color);
+  border-bottom: 1px solid #eee;
 }
 
-.lp>.llp>.head>h3 {
+/* Title */
+.lp > .llp > .head > h3 {
   margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: white;
 }
 
-.lp>.llp>.head>.items {
-  font-size: 0.9rem;
-  margin: auto 0;
+/* Header items */
+.head .items {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-.lp>.llp>.head>.items>.item {
+.head .item {
   cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  transition: 0.2s;
 }
 
+.head .item:hover {
+  color: var(--primary-color);
+}
+
+/* Logout */
+.head .logout {
+  color: #ef4444;
+}
+
+/* Content area */
+.leads {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* Scrollbar (optional but nice) */
+.leads::-webkit-scrollbar {
+  width: 6px;
+}
+
+.leads::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+/* Empty state */
 .nothing {
-  color: var(--grey);
   margin: auto;
-  font-size: 2rem;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  opacity: 0.6;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .lp > .lrp {
+    width: 200px;
+    min-width: 200px;
+  }
+
+  .lp > .llp > .head {
+    padding: 10px 15px;
+  }
+
+  .leads {
+    padding: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  /* Sidebar becomes top bar */
+  .lp > .lrp {
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  /* Optional: make nav horizontal */
+  .lrp nav {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .lrp .nav-section {
+    margin: 0;
+  }
+
+  .lrp ul {
+    display: flex;
+    gap: 10px;
+  }
+
+  .lrp li {
+    margin: 0;
+  }
+
+  /* Main content */
+  .lp > .llp {
+    width: 100%;
+  }
+
+  /* Header */
+  .lp > .llp > .head {
+    padding:12.5px 10px;
+  }
+
+  .lp > .llp > .head h3 {
+    font-size: 1rem;
+  }
+
+  /* Leads padding */
+  .leads {
+    padding: 10px;
+  }
 }

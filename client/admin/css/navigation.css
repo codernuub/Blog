@@ -1,59 +1,148 @@
-/*CSS for all pages of admin*/
-:root {
-  --primary-color: #000000;
-  --heading-color: #54e3d5;
-  --secondary-color: #54e3d530;
-  --bg-color: #54e3d510;
-  --grey: #a6a6a6;
+/* Sidebar Container */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: var(--card-bg);
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  overflow-y: auto;
 }
 
-.lrp>.profile {
-  width: 90%;
-  padding: 5%;
-  text-align: center;
+/* Profile Container */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
-.lrp > .profile > p {
-  font-family: 'Square Peg';
-  font-size:35px;
-  font-weight: lighter;
-  margin:0 auto;
+/* Avatar */
+.profile img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Info */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Name */
+.profile-info .name {
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--primary-color);
+  margin: 0;
+  line-height: 1.2;
 }
 
-.lrp>.profile>img {
-  width: 140px;
-  height: 140px;
-  border-radius: 100%;
-  margin: auto;
+/* Role Badge */
+.profile-info .role {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(84, 227, 213, 0.15);
+  color: var(--primary-color);
+  width: fit-content;
+  margin-top: 3px;
+  text-transform: capitalize;
 }
 
-.lrp>nav {
-  width: 80%;
-  padding: 2.5% 10%;
+/* Nav */
+nav {
+  flex: 1;
+  overflow-y: auto;
 }
 
-.lrp>nav>.nav-sec>ul {
+/* Section */
+.nav-section {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  padding-left: 5px;
+}
+
+/* List */
+.nav-section ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.lrp>nav>.nav-sec>ul>li {
-  margin: 15px 0;
+.nav-section li {
+  margin-bottom: 6px;
+}
+
+/* Links */
+.nav-section a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+/* Icon */
+.nav-section i {
+  font-size: 1rem;
   color: var(--primary-color);
 }
 
-.lrp>nav>.nav-sec>ul>li:hover {
-  color: #222;
+/* Hover */
+.nav-section a:hover {
+  background: rgba(84, 227, 213, 0.15);
+  color: var(--primary-color);
 }
 
-.lrp>nav>.nav-sec>ul>.active>a {
-  color: #222;
+/* Active */
+.nav-section .active a {
+  background: var(--primary-color);
+  color: #fff;
 }
 
-.lrp>nav>.nav-sec>h4 {
-  color: var(--grey);
-  font-weight: 400;
-  font-size: 0.9rem;
-  white-space: nowrap;
+.nav-section .active i {
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 40px;
+    padding: 15px 8px;
+  }
+
+  .profile-info,
+  .section-title,
+  .nav-section span {
+    display: none;
+  }
+
+  .nav-section a {
+    justify-content: center;
+  }
+
+  .profile {
+    padding:2px;
+  }
+  .profile img {
+    width: 100%;
+    aspect-ratio: square;
+    height: auto;
+  }
 }

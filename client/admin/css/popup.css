@@ -1,11 +1,3 @@
-:root {
-  --primary-color: #000000;
-  --heading-color: #54e3d5;
-  --secondary-color: #54e3d530;
-  --bg-color: #54e3d510;
-  --grey: #a6a6a6;
-}
-
 .backdrop {
   display: flex;
   position: absolute;

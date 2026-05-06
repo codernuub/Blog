@@ -1,44 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/css/font.css" />
+    <link rel="stylesheet" href="/public/admin/css/theme.css" />
+    <link rel="stylesheet" href="/public/admin/css/login.css" />
 
-  <link rel="stylesheet" href="/public/icofont/icofont.min.css" />
-  <link rel="stylesheet" href="/public/css/font.css" />
+    <title>Marketing Dashboard Login</title>
+  </head>
 
-  <link rel="stylesheet" href="/public/admin/css/login.css" />
-</head>
-
-<body>
-
-  
-  <div class="left-part">
-
-    <img src="/public/images/content-writer.jpg" />
-
-  </div>
-
-  <div class="right-part">
-    <div class="form-container">
-      <h1 class="title">Blogs</h1>
-      <form>
-        <div class="input">
-          <label>Username</label>
-          <input name="username" required="true" />
+  <body>
+    <div class="login-wrapper">
+      <div class="login-card">
+        <div class="branding">
+          <img src="/public/web/assets/images/new-logo.png" class="logo" />
+          <h1>Marketing Dashboard</h1>
+          <p>Manage blogs & leads</p>
         </div>
-        <div class="input">
-          <label>Password</label>
-          <input type="password" name="password" required="true" />
+
+        <form>
+          <div class="input">
+            <label>Username</label>
+            <input name="username" placeholder="Enter your username" required />
+          </div>
+
+          <div class="input">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              required
+            />
+          </div>
+
+          <button type="submit">Login</button>
+        </form>
+
+        <div class="footer">
+          <p>© 2026 2xcell</p>
         </div>
-        <button>Login</button>
-      </form>
+      </div>
     </div>
-  </div>
 
-</body>
-<script defer src="/public/admin/js/login.js"></script>
-
+    <script defer src="/public/admin/js/login.js"></script>
+  </body>
 </html>
