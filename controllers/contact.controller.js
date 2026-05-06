@@ -1,5 +1,5 @@
 const Contact = require("../models/Contact.Model");
-const APIFeatures = require("../utils/apiFeatures");
+const APIFeatures = require("../utils/APIFeatures");
 const catchAsync = require("../utils/catchAsync");
 
 exports.createContact = catchAsync(async (req, res, next) => {
