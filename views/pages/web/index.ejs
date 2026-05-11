@@ -52,35 +52,15 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+      <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body>
 
     <%- include('../../partials/web/header.ejs', {currentPath: currentPath}) %>
     
-
     <div id="container">
-      <div class="first">
-        <img src="/public/web/assets/css/bg3.png" alt="bg" />
-        <div class="top">
-          <div class="l1">
-            <div class="l1t1">
-              <p>AI Empowered Data Driven Blended Learning Platform</p>
-            </div>
-            <div class="l1t2">
-              <p>
-                Hybrid learning methodology combines traditional classroom
-                experience, experiential learning and digital tools and courses
-                to bring effective and sustainable learning outcomes.
-              </p>
-               <%- include("../../partials/web/cta-button") %>  
-            </div>
-          </div>
-          <div class="r1">
-            <img src="/public/web/assets/images/home1.png" id="top-image" />
-          </div>
-        </div>
-      </div>
+      <%- include("../../partials/web/home/intro.ejs") %>  
 
       <div class="l1b1">
         <a href="https://tech-basta.vercel.app/" target="">
@@ -88,90 +68,8 @@
         </a>
       </div>
 
-      <div class="why">
-        <div class="w1">
-          <h3>Why choose 2Xcell?</h3>
-          <div class="features">
-            <div class="box">
-              <img src="/public/web/assets/icon/hc.png" />
-              <p>Online and offline class sync Hybrid Education</p>
-            </div>
-            <div class="box">
-              <img src="/public/web/assets/icon/icon2.png" />
-              <p>Power-packed resource library</p>
-            </div>
-            <div class="box">
-              <img src="/public/web/assets/icon/ae.png" />
-              <p>Evaluation of learning outcomes and gaps.</p>
-            </div>
-            <div class="box">
-              <img src="/public/web/assets/icon/icon4.png" />
-              <p>Best student - teacher match based on Analytics</p>
-            </div>
-            <div class="box">
-              <img src="/public/web/assets/icon/icon5.png" style="padding-top: 15px" />
-              <p>Most innovative doubt section</p>
-            </div>
-            <div class="box">
-              <img src="/public/web/assets/icon/icon6.png" style="padding-top: 15px" />
-              <p>24x7 Support</p>
-            </div>
-          </div>
-        </div>
-
-        <!--<div class="w2">
-          <div class="w21">
-            <h2>Your excellence, our commitment!</h2>
-            <p>Please provide require details</p>
-          </div>
-
-          <form id="register">
-            <input
-              placeholder="Name of your Child"
-              class="name"
-              type="text"
-              id="registration_name"
-            />
-
-            <div class="otp">
-                    <input placeholder="Mobile Number" id="mob" type="number"><button id="otp">Send OTP</button>
-                </div> 
-            <input
-              placeholder="Mobile Number "
-              type="tel"
-              id="registration_contact"
-            />
-            <input
-              placeholder="Email Address"
-              type="email"
-              id="registration_email"
-            />
-            <input placeholder="Grade">
-
-            <label for="cars">Select Grade</label> 
-            <select name="grade" id="grade">
-              <option>Select Grade</option>
-              <option value="UKG">UKG</option>
-              <option value="I">I</option>
-              <option value="II">II</option>
-              <option value="III">III</option>
-              <option value="IV">IV</option>
-              <option value="V">V</option>
-              <option value="VI">VI</option>
-              <option value="VII">VII</option>
-              <option value="VIII">VIII</option>
-              <option value="IX">IX</option>
-              <option value="X">X</option>
-              <option value="IX">XI</option>
-              <option value="X">XII</option>
-            </select>
-            <input placeholder="State" type="text" id="registration_state" />
-            <button class="register" onClick="openOTPModal()" type="button">
-              Register Now
-            </button>
-          </form>
-        </div>-->
-      </div>
+      <%- include("../../partials/web/home/chooseus.ejs") %>  
+      <%- include("../../partials/web/home/aboutus.ejs") %>  
 
       <div class="otp_modal_bg" id="otp_modal_bg">
         <div class="otp_modal" id="otp_modal">
@@ -183,117 +81,6 @@
           </span>
         </div>
       </div>
-
-      <div class="about" id="about">
-        <h3>About Us</h3>
-        <div class="para">
-          <p>
-            2Xcell is an A.I driven self-paced learning and assessment platform
-            that helps a student become a ‘Super Learner’ using Hybrid and
-            Blended Learning Model. It is designed keeping in mind the Future of
-            Education and driving learning through data output and AI. Over the
-            time it understands the teaching and assessment styles and starts
-            taking over feedback.
-          </p>
-          <div class="thumbnail">
-            <img src="/public/web/assets/images/about-us/Para-1.png" alt="para-1" />
-          </div>
-        </div>
-        <div class="para">
-          <div class="thumbnail">
-            <img src="/public/web/assets/images/about-us/Para-2.png" alt="para-2" />
-          </div>
-          <p>
-            In 2xcell, has advanced personalized learning algorithms and impact
-            measurement tools designed to enhance educational outcomes. By
-            continuously refining these tools based on cutting-edge research,
-            technological advancements, and real-world data gathered from
-            thousands of schools we have worked with.
-          </p>
-        </div>
-        <div class="para">
-          <p>
-            Students get “Exclusive Personalized Learning under the guidance of
-            their teacher and mentors, which strengthens the learning base of
-            students. The interactive, immersive and customized digital
-            resources in the form 3D-2D animated modules, self-learning
-            activities, simulations, games, stories help them to upgrade their
-            skills at a much faster pace.
-          </p>
-          <div class="slider">
-            <div class="carousel">
-              <div class="slides">
-                <div class="slide">
-                  <img
-                    src="/public/web/assets/images/about-us/Para-3A.png"
-                    alt="Image 1"
-                  />
-                </div>
-                <div class="slide">
-                  <img
-                    src="/public/web/assets/images/about-us/Para-3B.png"
-                    alt="Image 2"
-                  />
-                </div>
-                <div class="slide">
-                  <img
-                    src="/public/web/assets/images/about-us/Para-3C.png"
-                    alt="Image 3"
-                  />
-                </div>
-                <div class="slide">
-                  <img
-                    src="/public/web/assets/images/about-us/Para-3D.png"
-                    alt="Image 4"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="para">
-          <div class="slider">
-            <div class="carousel">
-              <div class="slides">
-                <div class="slide">
-                  <img
-                    src="/public/web/assets/images/about-us/Para-4A.png"
-                    alt="Image 1"
-                  />
-                </div>
-                <div class="slide">
-                  <img
-                    src="/public/web/assets/images/about-us/Para-4B.png"
-                    alt="Image 2"
-                  />
-                </div>
-                <div class="slide">
-                  <img
-                    src="/public/web/assets/images/about-us/Para-4C.png"
-                    alt="Image 3"
-                  />
-                </div>
-                <div class="slide">
-                  <img
-                    src="/public/web/assets/images/about-us/Para-4D.png"
-                    alt="Image 4"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <p>
-            Inquiry-Based Learning (IBL) helps a student assess himself and
-            measure the learning outcome /Learning index or Lx at subtopic level
-            and provides remarkable insights to help teachers/mentor plan the
-            right pedagogy for the student and design a personalized ‘Goal
-            Oriented’ learning plan. Seamless integration of concepts across
-            grades under the “Multi-Grade Program” helps students strengthen the
-            base for the upcoming Grades and explore beyond the curriculum.
-          </p>
-        </div>
-      </div>
-
       <div class="numbers">
         <div class="n1">
           <h1>Our Strength in Numbers</h1>
