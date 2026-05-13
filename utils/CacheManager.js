@@ -1,4 +1,4 @@
-class MemoryCache {
+class CacheManager {
   constructor() {
     this.store = new Map();
     this.pending = new Map();
@@ -73,4 +73,4 @@ class MemoryCache {
   }
 }
 
-module.exports = new MemoryCache();
+module.exports = new CacheManager();
