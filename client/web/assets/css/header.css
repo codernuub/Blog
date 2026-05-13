@@ -399,13 +399,21 @@ option {
 }
 
 .social {
+   display: flex;
+    gap: 5px;
   padding: 15px;
 }
 .social img {
     width: 40px;
 }
-
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 #logo {
+  margin: auto !important;
   padding: 15px;
 }
 

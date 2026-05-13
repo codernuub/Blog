@@ -519,6 +519,8 @@ option {
 }
 
 .social {
+    display: flex;
+    gap: 5px;
     padding: 15px;
 }
 .social img {
