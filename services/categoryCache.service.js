@@ -1,5 +1,5 @@
 const CategoryModel = require("../models/Category.Model");
-const cache = require("../utils/memoryCache");
+const cache = require("../utils/CacheManager");
 
 const CATEGORY_CACHE_KEYS = {
   PUBLIC: "categories_public",
