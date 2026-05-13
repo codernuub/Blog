@@ -75,12 +75,17 @@ body {
 .head .item {
   cursor: pointer;
   font-size: 1.2rem;
-  color: var(--text-dark);
+  color:white;
   transition: 0.2s;
 }
 
+.head .item > * {
+  color: white;
+  text-decoration: none;
+}
+
 .head .item:hover {
-  color: var(--primary-color);
+  color: whitesmoke;
 }
 
 /* Logout */

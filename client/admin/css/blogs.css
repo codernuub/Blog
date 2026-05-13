@@ -1,11 +1,3 @@
-:root {
-  --primary-color: #000000;
-  --heading-color: #54e3d5;
-  --secondary-color: #54e3d530;
-  --bg-color: #54e3d510;
-  --grey: #a6a6a6;
-}
-
 .blogs {
   display: flex;
   flex-wrap: wrap;
@@ -35,99 +27,103 @@
 }
 
 .blogs > .block-blog {
-  opacity:0.6;
+  opacity: 0.6;
 }
 
-.blogs>.blog {
+.blogs > .blog {
   position: relative;
   width: 22.5%;
   margin: 2.5% 2.5% 0 0;
   border-radius: 10px;
   background-color: #fff;
-  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.07), 0 5px 15px 0 rgba(0, 0, 0, 0.07);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.07),
+    0 5px 15px 0 rgba(0, 0, 0, 0.07);
   transition: 1s all;
   display: flex;
   flex-direction: column;
 }
 
-.blogs>.blog:hover {
+.blogs > .blog:hover {
   box-shadow: none;
   transition: 1s all;
 }
 
-.blogs>.blog>.gear {
+.blogs > .blog > .gear {
   display: flex;
   position: absolute;
   top: 10px;
-  right:10px;
-  padding:5px;
+  right: 10px;
+  padding: 5px;
   background-color: rgba(255, 255, 255, 0.737);
-  border-radius:5px;
+  border-radius: 5px;
   font-size: 1.1rem;
 }
 
-.blogs>.blog>.gear>i{
+.blogs > .blog > .gear > i {
   margin: auto;
 }
 
-.blogs>.blog>.thumbnail>img {
+.blogs > .blog > .thumbnail > img {
   width: 100%;
   height: 150px;
   overflow: hidden;
   border-radius: 10px 10px 0 0;
+  object-fit: cover;
 }
 
-.blogs>.blog>.content {
+.blogs > .blog > .content {
   flex: 1;
   display: flex;
   flex-direction: column;
   padding: 5%;
 }
 
-.blogs>.blog>.content>.head {
+.blogs > .blog > .content > .head {
   display: flex;
   justify-content: space-between;
 }
 
-.blogs>.blog>.content>.head>h3 {
+.blogs > .blog > .content > .head > h3 {
   font-size: medium;
   margin-top: 0;
-  font-family:'Poppins';
+  font-family: 'Poppins';
   font-weight: 400;
   font-size: 1rem;
-  line-height:1.1rem;
+  line-height: 1.1rem;
 }
 
-.blogs>.blog>.content>p{
-  font-size:0.85rem;
-  margin:10px 0;
+.blogs > .blog > .content > p {
+  font-size: 0.85rem;
+  margin: 10px 0;
 }
 
-.blogs>.blog>.content>.meta-content {
+.blogs > .blog > .content > .meta-content {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
 }
 
-.blogs>.blog>.content>.meta-content>span {
+.blogs > .blog > .content > .meta-content > span {
   display: block;
   white-space: nowrap;
   margin: 6px 10px 6px 0;
 }
-.blogs>.blog>.content>.mc-1:nth-child(2){
+
+.blogs > .blog > .content > .mc-1:nth-child(2) {
   margin-top: auto;
   margin-bottom: 0;
 }
-.blogs>.blog>.content>.mc-1>span {
+
+.blogs > .blog > .content > .mc-1 > span {
   color: var(--grey);
   font-size: 0.8rem;
 }
 
-.blogs>.blog>.content>.mc-2 {
+.blogs > .blog > .content > .mc-2 {
   justify-content: space-between;
 }
 
-.blogs>.blog>.content>.mc-2>span {
+.blogs > .blog > .content > .mc-2 > span {
   color: var(--primary-color);
   font-size: 0.9rem;
   cursor: pointer;
@@ -137,12 +133,12 @@
   display: none;
   position: absolute;
   z-index: 10;
-  top:50px;
-  left:75%;
+  top: 50px;
+  left: 75%;
   list-style: none;
-  padding:10px 10px 0 0;
+  padding: 10px 10px 0 0;
   margin: 0;
-  border-radius:5px;
+  border-radius: 5px;
   background-color: #fff;
   box-shadow: 1px 2px 10px 2px rgba(0, 0, 0, 0.08);
 }
@@ -152,22 +148,73 @@
 }
 
 .tools > li {
-  width:80px;
+  width: 80px;
   display: flex;
   justify-content: flex-start;
-  padding:0 0 10px 10px;
-  font-size:0.7rem;
+  padding: 0 0 10px 10px;
+  font-size: 0.7rem;
   color: var(--grey);
   white-space: nowrap;
   cursor: pointer;
 }
 
 .tools > li > span:nth-child(1) {
-  width:15px;
-  font-size:0.7rem;
+  width: 15px;
+  font-size: 0.7rem;
   margin: auto 0;
 }
 
 .tools > .delete {
   color: orangered;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Laptop */
+@media screen and (max-width: 1200px) {
+  .blogs > .blog {
+    width: 30.83%;
+  }
+}
+
+/* Tablet */
+@media screen and (max-width: 900px) {
+  .blogs {
+    padding: 0 0 4% 4%;
+  }
+
+  .blogs > .blog {
+    width: 46%;
+    margin: 4% 4% 0 0;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+  .blogs {
+    padding: 0 0 5% 5%;
+  }
+
+  .blogs > .blog {
+    width: 95%;
+    margin: 5% 5% 0 0;
+  }
+
+  .blogs > .blog > .thumbnail > img {
+    height: 190px;
+  }
+
+  .blogs > .blog > .content > .head > h3 {
+    font-size: 0.95rem;
+    line-height: 1.3rem;
+  }
+
+  .blogs > .blog > .content > p {
+    font-size: 0.82rem;
+  }
+
+  .tools {
+    left: auto;
+    right: 10px;
+  }
 }

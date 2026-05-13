@@ -8,6 +8,7 @@ const buttons = [...form.querySelector(".save-btn").children];
 const state = {
   popupForm: null,
   blogId: null,
+  thumbnailDataUrl: "",
 };
 
 function parseTemp(temp) {
@@ -22,6 +23,16 @@ function validateLink(urlString) {
     return true;
   } catch (err) {
     return false;
+  }
+}
+
+function handleLinkPaste(e) {
+  if (validateLink(e.target.value)) {
+    img.src = e.target.value;
+    console.log("New Image");
+  } else {
+    img.src = "/public/images/default-thumbnail.jfif";
+    console.log("Default Image");
   }
 }
 
@@ -42,6 +53,42 @@ function closePopup() {
   backdrop.children[0].innerHTML = "";
   state["popupForm"] = null;
 }
+
+const thumbnailInput = document.getElementById("thumbnailInput");
+const thumbnailError = document.getElementById("thumbnailError");
+
+thumbnailInput.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+
+  if (!file) return;
+
+  // Validate image size (1MB)
+  if (file.size > 1024 * 1024) {
+    thumbnailError.style.display = "block";
+
+    thumbnailInput.value = "";
+
+    img.src = "/public/images/default-thumbnail.jfif";
+
+    state["thumbnailDataUrl"] = "";
+
+    return;
+  }
+
+  thumbnailError.style.display = "none";
+
+  const reader = new FileReader();
+
+  reader.onload = (event) => {
+    const dataUrl = event.target.result;
+
+    img.src = dataUrl;
+
+    state["thumbnailDataUrl"] = dataUrl;
+  };
+
+  reader.readAsDataURL(file);
+});
 
 function handleLinkPaste(e) {
   if (validateLink(e.target.value)) {
@@ -71,9 +118,13 @@ function extractInputs(inputs) {
         data[input.name] = input.value.split(",").map((key) => key.trim());
         break;
       default:
-        data[input.name] = input.value;
+        // skip file input
+        if (input.type !== "file") {
+          data[input.name] = input.value;
+        }
     }
   });
+  data["thumbnail"] = state["thumbnailDataUrl"] || "";
   data["content"] = editor.children[0].innerHTML;
   return data;
 }
@@ -135,7 +186,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     res.data.categories.forEach((category) => {
       const catTemp = parseTemp(
-        `<option value=${category._id}>${category.title}</option>`
+        `<option value=${category._id}>${category.title}</option>`,
       );
       selectCategoriesEl.appendChild(catTemp);
     });
@@ -156,11 +207,19 @@ window.addEventListener("DOMContentLoaded", async () => {
       [...form.elements].forEach((field) => {
         if (!field.name) return;
         if (field.name === "keywords") {
-          field.value = res.data.blog[field.name] ? res.data.blog[field.name].join(", ") : "";
+          field.value = res.data.blog[field.name]
+            ? res.data.blog[field.name].join(", ")
+            : "";
           return;
         }
         if (field.name === "thumbnail") {
-          res.data.blog[field.name] && (img.src = res.data.blog[field.name] );
+          if (res.data.blog[field.name]) {
+            img.src = res.data.blog[field.name];
+
+            state["thumbnailDataUrl"] = res.data.blog[field.name];
+          }
+
+          return;
         }
         field.value = res.data.blog[field.name] || "";
       });

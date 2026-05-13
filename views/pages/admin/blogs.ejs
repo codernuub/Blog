@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="/public/icofont/icofont.min.css" />
     <link rel="stylesheet" href="/public/css/font.css" />
-
+    <link rel="stylesheet" href="/public/admin/css/theme.css" />
     <link rel="stylesheet" href="/public/admin/css/template.css" />
     <link rel="stylesheet" href="/public/admin/css/header.css" />
     <link rel="stylesheet" href="/public/admin/css/navigation.css" />
@@ -16,15 +16,6 @@
   </head>
 
   <body>
-    <!--HEADER-->
-    <header class="up">
-      <h2 class="upr"><%=user.role%> Panel</h2>
-
-      <div class="upl">
-        <span class="item power"><i class="icofont-power"></i></span>
-      </div>
-    </header>
-
     <div class="lp">
       <!--SIDE NAVIGATION-->
       <%-include("../../partials/navigation.ejs", {user:user})%>
@@ -39,6 +30,9 @@
                 <i class="icofont-edit"></i>&nbsp;
                 <span>Create Blog</span>
               </a>
+            </div>
+             <div class="item">
+               <span class="item power logout"><i class="icofont-power"></i></span>
             </div>
           </div>
         </div>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link rel="shortcut icon" href="/public/web/assets/favicon_io/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      href="/public/web/assets/favicon_io/apple-touch-icon.png"
+    />
+    <% if(blog) { %>
+
+      <!-- SEO -->
+      <title><%= blog.title %> | 2Xcell Blog</title>
+     
+
+      <meta
+        name="description"
+        content="<%= blog.description %>"
+      />
+
+      <meta
+        name="keywords"
+        content="<%= blog.keywords?.join(', ') %>"
+      />
+
+      <meta
+        name="author"
+        content="<%= blog.author?.name %>"
+      />
+
+      <!-- Open Graph -->
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content="<%= blog.title %>" />
+      <meta property="og:description" content="<%= blog.description %>" />
+      <meta property="og:image" content="<%= blog.thumbnail %>" />
+
+      <meta
+        property="og:url"
+        content="https://2xcell.in/blogs/<%= blog.slug %>"
+      />
+
+      <!-- Twitter -->
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="<%= blog.title %>" />
+
+      <meta
+        name="twitter:description"
+        content="<%= blog.description %>"
+      />
+
+      <meta
+        name="twitter:image"
+        content="<%= blog.thumbnail %>"
+      />
+
+      <!-- Canonical -->
+      <link
+        rel="canonical"
+        href="https://2xcell.in/blogs/<%= blog.slug %>"
+      />
+
+    <% } else { %>
+
+      <title>Blog Not Found | 2Xcell</title>
+
+      <meta
+        name="description"
+        content="The blog you are looking for does not exist or has been removed."
+      />
+
+    <% } %>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    
+    <link rel="stylesheet" href="/public/web/assets/css/header.css" />
+    <link rel="stylesheet" href="/public/web/assets/css/new.css" />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(
+          135deg,
+          #23f7e1 0%,
+          #8494ff 100%
+        );
+      }
+
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          #23f7e1 0%,
+          #8494ff 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .blog-content h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 24px 0 14px;
+        color: #111827;
+      }
+
+      .blog-content h2 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin: 22px 0 12px;
+        color: #111827;
+      }
+
+      .blog-content h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: 20px 0 10px;
+        color: #111827;
+      }
+
+      .blog-content p {
+        margin-bottom: 18px;
+        line-height: 1.9;
+        color: #374151;
+      }
+
+      .blog-content img {
+        width: 100%;
+        border-radius: 18px;
+        margin: 24px 0;
+      }
+
+      .blog-content ul,
+      .blog-content ol {
+        padding-left: 20px;
+        margin-bottom: 20px;
+      }
+
+      .blog-content li {
+        margin-bottom: 10px;
+      }
+
+      .blog-content blockquote {
+        border-left: 4px solid #23f7e1;
+        padding-left: 18px;
+        margin: 20px 0;
+        color: #4b5563;
+        font-style: italic;
+      }
+
+      .blog-content a {
+        color: #4f7cff;
+      }
+
+      .blog-content pre {
+        overflow-x: auto;
+        background: #111827;
+        color: white;
+        padding: 20px;
+        border-radius: 14px;
+        margin: 20px 0;
+      }
+
+      .blog-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      .blog-content table td,
+      .blog-content table th {
+        border: 1px solid #e5e7eb;
+        padding: 12px;
+      }
+
+      .blog-content table th {
+        background: #f9fafb;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+
+    <%- include("../../partials/web/header") %>
+
+    <% if(blog) { %>
+
+      <!-- HERO -->
+      <section class="bg-white border-b border-gray-200">
+
+        <div class="max-w-7xl mx-auto px-4 py-10 md:py-14">
+
+          <!-- CATEGORY -->
+          <div class="mb-6">
+
+            <span
+              class="inline-flex items-center rounded-full px-4 py-1 text-sm font-medium text-white gradient-bg"
+            >
+              <%= blog.category?.title %>
+            </span>
+
+          </div>
+
+          <!-- TITLE -->
+          <h1
+            class="text-3xl md:text-5xl font-bold leading-tight text-gray-900 max-w-5xl"
+          >
+            <%= blog.title %>
+          </h1>
+
+          <!-- DESCRIPTION -->
+          <p
+            class="mt-5 text-base md:text-lg text-gray-600 max-w-4xl leading-8"
+          >
+            <%= blog.description %>
+          </p>
+
+          <!-- AUTHOR -->
+          <div
+            class="flex flex-wrap items-center gap-4 mt-8 text-sm text-gray-500"
+          >
+
+            <div class="flex items-center gap-3">
+
+              <div
+                class="w-12 h-12 rounded-full text-white flex items-center justify-center font-semibold text-lg gradient-bg"
+              >
+                <%= blog.author?.name?.charAt(0) || "A" %>
+              </div>
+
+              <div>
+
+                <p class="font-medium text-gray-800">
+                  <%= blog.author?.name %>
+                </p>
+
+                <p>
+                  <%= new Date(blog.createdAt).toDateString() %>
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- MAIN -->
+      <main class="max-w-7xl mx-auto px-4 py-10">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+
+          <!-- ARTICLE -->
+          <article class="lg:col-span-8">
+
+            <!-- THUMBNAIL -->
+            <% if(blog.thumbnail) { %>
+
+              <div
+                class="overflow-hidden rounded-3xl shadow-lg bg-white"
+              >
+
+                <img
+                  src="<%= blog.thumbnail %>"
+                  alt="<%= blog.title %>"
+                  class="w-full h-[250px] md:h-[500px] object-cover"
+                />
+
+              </div>
+
+            <% } %>
+
+            <!-- CONTENT -->
+            <div
+              class="blog-content bg-white rounded-3xl shadow-sm p-6 md:p-10 <%= blog.thumbnail ? 'mt-8' : '' %>"
+            >
+              <%- blog.content %>
+            </div>
+
+          </article>
+
+          <!-- SIDEBAR -->
+          <aside class="lg:col-span-4">
+
+            <!-- AUTHOR -->
+            <div class="bg-white rounded-3xl shadow-sm p-6 mb-6">
+
+              <h3 class="text-xl font-semibold mb-5">
+                About Author
+              </h3>
+
+              <div class="flex items-center gap-4">
+
+                <div
+                  class="w-14 h-14 rounded-full text-white flex items-center justify-center text-xl font-semibold gradient-bg"
+                >
+                  <%= blog.author?.name?.charAt(0) || "A" %>
+                </div>
+
+                <div>
+
+                  <p class="font-semibold text-gray-800">
+                    <%= blog.author?.name %>
+                  </p>
+
+                  <p class="text-sm text-gray-500">
+                    Blog Author
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- CURRENT CATEGORY -->
+            <div class="bg-white rounded-3xl shadow-sm p-6 mb-6">
+
+              <h3 class="text-xl font-semibold mb-5">
+                Current Category
+              </h3>
+
+              <div
+                class="inline-flex rounded-full px-5 py-2 text-white font-medium gradient-bg"
+              >
+                <%= blog.category?.title %>
+              </div>
+
+            </div>
+
+            <!-- ALL CATEGORIES -->
+            <div class="bg-white rounded-3xl shadow-sm p-6">
+
+              <h3 class="text-xl font-semibold mb-5">
+                Categories
+              </h3>
+
+              <div class="flex flex-col gap-3">
+
+                <% categories.forEach(category => { %>
+
+                  <a
+                    href="/blogs/category/<%= category.slug %>"
+                    class="flex items-center justify-between px-4 py-3 rounded-2xl bg-gray-50 hover:bg-cyan-50 transition-all duration-300 group"
+                  >
+
+                    <span
+                      class="font-medium text-gray-700 group-hover:text-cyan-600"
+                    >
+                      <%= category.title %>
+                    </span>
+
+                    <span
+                      class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm text-sm"
+                    >
+                      →
+                    </span>
+
+                  </a>
+
+                <% }) %>
+
+              </div>
+
+            </div>
+
+          </aside>
+
+        </div>
+
+      </main>
+
+    <% } else { %>
+
+      <!-- BLOG NOT FOUND -->
+      <section
+        class="min-h-[70vh] flex items-center justify-center px-4"
+      >
+
+        <div
+          class="max-w-xl w-full bg-white rounded-3xl shadow-sm p-10 text-center"
+        >
+
+          <div
+            class="w-24 h-24 mx-auto rounded-full gradient-bg text-white flex items-center justify-center text-5xl mb-6"
+          >
+            📄
+          </div>
+
+          <h1 class="text-3xl font-bold text-gray-900 mb-4">
+            Blog Not Found
+          </h1>
+
+          <p class="text-gray-600 leading-8 mb-8">
+            The blog you are trying to access does not exist,
+            may have been removed, or is currently unavailable.
+          </p>
+
+          <a
+            href="/blogs"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-xl text-white font-medium transition-all duration-300 gradient-bg"
+          >
+            Explore Blogs
+          </a>
+
+        </div>
+
+      </section>
+
+    <% } %>
+
+    <%- include("../../partials/web/footer") %>
+
+  </body>
+</html>

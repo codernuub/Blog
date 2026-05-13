@@ -4,14 +4,19 @@ const BlogModel = require("../models/Blog.Model");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
+const {
+  getPublicCategories,
+  getAdminCategories,
+  clearCategoryCache,
+} = require("../services/categoryCache.service");
+const { createSlug } = require("../utils/text");
+
 /**
  * @name fetchCategories
- * @description fetch categories for bloggers/readers
+ * @description public categories
  */
 exports.fetchCategories = catchAsync(async (req, res, next) => {
-  const categories = await CategoryModel.find({ active: true })
-    .select("title")
-    .lean();
+  const categories = await getPublicCategories();
 
   return res.status(200).json({
     status: "success",
@@ -24,40 +29,10 @@ exports.fetchCategories = catchAsync(async (req, res, next) => {
 
 /**
  * @name fetchAllCategories
- * @description fetch categories for admin
+ * @description admin categories
  */
 exports.fetchAllCategories = catchAsync(async (req, res, next) => {
-  const categories = await CategoryModel.aggregate([
-    {
-      $lookup: {
-        from: "blogs",
-        localField: "_id",
-        foreignField: "category",
-        pipeline: [
-          {
-            $project: {
-              _id: 1,
-            },
-          },
-        ],
-        as: "blogs",
-      },
-    },
-    {
-      $project: {
-        _id: 1,
-        title: 1,
-        blogs: { $size: "$blogs" },
-        active: 1,
-        createdAt: 1,
-      },
-    },
-    {
-      $sort: {
-        createdAt: -1,
-      },
-    },
-  ]);
+  const categories = await getAdminCategories();
 
   return res.status(200).json({
     status: "success",
@@ -69,53 +44,7 @@ exports.fetchAllCategories = catchAsync(async (req, res, next) => {
 });
 
 exports.fetchActiveCategories = catchAsync(async (req, res, next) => {
-  const categories = await CategoryModel.aggregate([
-    {
-      $match: {
-        active: true,
-      },
-    },
-    {
-      $lookup: {
-        from: "blogs",
-        let: {
-          category: "$_id",
-        },
-        pipeline: [
-          {
-            $match: {
-              $expr: {
-                $and: [
-                  { $eq: ["$category", "$$category"] },
-                  { $eq: ["$active", true] },
-                ],
-              },
-            },
-          },
-          {
-            $project: {
-              _id: 1,
-            },
-          },
-        ],
-        as: "blogs",
-      },
-    },
-    {
-      $project: {
-        _id: 1,
-        title: 1,
-        blogs: { $size: "$blogs" },
-        active: 1,
-        createdAt: 1,
-      },
-    },
-    {
-      $sort: {
-        createdAt: -1,
-      },
-    },
-  ]);
+  const categories = await getPublicCategories();
 
   req.categories = categories;
   return next();
@@ -123,14 +52,17 @@ exports.fetchActiveCategories = catchAsync(async (req, res, next) => {
 
 /**
  * @name addCategory
- * @description add new category in database
  */
 exports.addCategory = catchAsync(async (req, res, next) => {
   const category = await CategoryModel.create({
     title: req.body.title,
+    slug: createSlug(req.body.title),
     active: req.body.active,
     createdAt: Date.now(),
   });
+
+  // clear cache
+  clearCategoryCache();
 
   return res.status(200).json({
     status: "success",
@@ -142,10 +74,18 @@ exports.addCategory = catchAsync(async (req, res, next) => {
 
 /**
  * @name updateCategory
- * @description update category
  */
 exports.updateCategory = catchAsync(async (req, res, next) => {
-  await CategoryModel.updateOne({ _id: req.params.categoryId }, req.body);
+  if(req.body.title) {
+    req.body.slug = createSlug(req.body.title);
+  }
+  await CategoryModel.updateOne(
+    { _id: req.params.categoryId },
+    req.body
+  );
+
+  // clear cache
+  clearCategoryCache();
 
   return res.status(200).json({
     status: "success",
@@ -155,7 +95,6 @@ exports.updateCategory = catchAsync(async (req, res, next) => {
 
 /**
  * @name deleteCategory
- * @description delete category
  */
 exports.removeCategory = catchAsync(async (req, res, next) => {
   const blogsCount = await BlogModel.countDocuments({
@@ -170,11 +109,16 @@ exports.removeCategory = catchAsync(async (req, res, next) => {
       )
     );
 
-  const result = await CategoryModel.deleteOne({ _id: req.params.categoryId });
+  const result = await CategoryModel.deleteOne({
+    _id: req.params.categoryId,
+  });
 
   if (!result.deletedCount) {
     return next(new AppError("Failed to delete category", 400));
   }
+
+  // clear cache
+  clearCategoryCache();
 
   return res.status(200).json({
     status: "success",

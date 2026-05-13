@@ -20,7 +20,7 @@ const contactRoutes = require("./routes/apis/contact.routes");
 const adminRoutes = require("./routes/pages/admin.routes");
 const webRoutes = require("./routes/pages/web.routes");
 //parse body object
-app.use(express.json());
+app.use(express.json({limit:'2mb'}));
 //parse cookie
 app.use(cookieParser());
 

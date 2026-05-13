@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="shortcut icon"
+      href="/public/web/assets/favicon_io/favicon-16x16.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      href="/public/web/assets/favicon_io/apple-touch-icon.png"
+    />
+
+    <!-- SEO -->
+    <title>
+      <%= pageTitle || "Blogs" %> | 2Xcell
+    </title>
+
+    <meta
+      name="description"
+      content="<%= pageDescription || 'Explore latest blogs, technology articles, education updates and insights from 2Xcell.' %>"
+    />
+
+    <meta
+      name="keywords"
+      content="blogs, technology blogs, AI blogs, education blogs, latest articles, 2Xcell blogs"
+    />
+
+    <meta
+      name="robots"
+      content="index, follow"
+    />
+
+    <link
+      rel="canonical"
+      href="https://yourdomain.com/blogs?page=<%= currentPage || 1 %>"
+    />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:type"
+      content="website"
+    />
+
+    <meta
+      property="og:title"
+      content="<%= pageTitle || 'Blogs' %> | 2Xcell"
+    />
+
+    <meta
+      property="og:description"
+      content="<%= pageDescription || 'Explore latest blogs, technology articles, education updates and insights from 2Xcell.' %>"
+    />
+
+    <meta
+      property="og:url"
+      content="https://yourdomain.com/blogs"
+    />
+
+    <meta
+      property="og:image"
+      content="https://yourdomain.com/public/web/assets/images/og-blog.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+
+    <meta
+      name="twitter:title"
+      content="<%= pageTitle || 'Blogs' %> | 2Xcell"
+    />
+
+    <meta
+      name="twitter:description"
+      content="<%= pageDescription || 'Explore latest blogs from 2Xcell.' %>"
+    />
+
+    <meta
+      name="twitter:image"
+      content="https://yourdomain.com/public/web/assets/images/og-blog.jpg"
+    />
+
+    <!-- Blog Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "<%= pageTitle || '2Xcell Blogs' %>",
+        "description": "<%= pageDescription || 'Explore latest blogs and educational articles.' %>",
+        "url": "https://yourdomain.com/blogs",
+        "publisher": {
+          "@type": "Organization",
+          "name": "2Xcell",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://yourdomain.com/public/web/assets/logo.png"
+          }
+        },
+        "blogPost": [
+          <% blogs.forEach((blog, index) => { %>
+          {
+            "@type": "BlogPosting",
+            "headline": "<%= blog.title %>",
+            "description": "<%= blog.description %>",
+            "url": "https://yourdomain.com/blogs/<%= blog.slug %>",
+            "image": "<%= blog.thumbnail || 'https://yourdomain.com/public/web/assets/images/default-blog.jpg' %>",
+            "datePublished": "<%= new Date(blog.createdAt).toISOString() %>",
+            "author": {
+              "@type": "Person",
+              "name": "<%= blog.author?.name || 'Admin' %>"
+            }
+          }<%= index !== blogs.length - 1 ? ',' : '' %>
+          <% }) %>
+        ]
+      }
+    </script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=line-clamp"></script>
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/public/web/assets/css/header.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/public/web/assets/css/new.css"
+    />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(
+          135deg,
+          #23f7e1 0%,
+          #8494ff 100%
+        );
+      }
+
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          #23f7e1 0%,
+          #8494ff 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .blog-card {
+        backdrop-filter: blur(10px);
+      }
+    </style>
+  </head>
+
+  <body class="bg-[#f5f7fb] text-gray-800">
+
+    <%- include("../../partials/web/header") %>
+
+    <!-- HERO -->
+    <section
+      class="relative overflow-hidden bg-white border-b border-gray-100"
+    >
+
+    
+
+      <div
+        class="relative max-w-7xl mx-auto px-4 py-14 md:py-20"
+      >
+
+        <h1
+          class="text-4xl md:text-6xl font-bold pb-2 leading-tight gradient-text"
+        >
+          <%= heading || "Latest Blogs" %>
+        </h1>
+
+        <p
+          class="mt-6 max-w-3xl text-gray-600 leading-8 text-base md:text-lg"
+        >
+          <%= subHeading || "Explore insightful blogs, educational articles, trending technologies, and industry updates." %>
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- BLOGS -->
+    <main class="max-w-7xl mx-auto px-4 py-12">
+
+      <% if(blogs && blogs.length > 0) { %>
+
+        <!-- BLOG GRID -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+
+          <% blogs.forEach(blog => { %>
+
+            <article
+              class="blog-card group bg-white/90 rounded-[28px] overflow-hidden border border-white shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col"
+            >
+
+              <!-- IMAGE -->
+              <a
+                href="/blogs/<%= blog.slug %>"
+                class="relative overflow-hidden"
+              >
+
+                <img
+                  src="<%= blog.thumbnail || '/public/images/default-thumbnail.jfif' %>"
+                  alt="<%= blog.title %>"
+                  loading="lazy"
+                  class="w-full h-[240px] object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+
+                <!-- Overlay -->
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent"
+                ></div>
+
+                <!-- Category -->
+                <% if(blog.category?.title) { %>
+
+                  <div class="absolute top-4 left-4">
+
+                  <span
+  class="inline-flex items-center rounded-full px-4 py-1 text-xs font-medium text-white gradient-bg shadow-lg"
+>
+  <%= blog.category.title %>
+</span>
+
+                  </div>
+
+                <% } %>
+
+              </a>
+
+              <!-- CONTENT -->
+              <div class="p-6 flex flex-col flex-1">
+
+                <!-- TITLE -->
+                <a href="/blogs/<%= blog.slug %>">
+
+                  <h2
+                    class="text-[22px] leading-[34px] font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors duration-300 line-clamp-2 min-h-[68px]"
+                  >
+                    <%= blog.title %>
+                  </h2>
+
+                </a>
+
+                <!-- DESCRIPTION -->
+                <p
+                  class="mt-4 text-gray-600 leading-7 text-[15px] line-clamp-3 min-h-[84px]"
+                >
+                  <%= blog.description %>
+                </p>
+
+                <!-- META -->
+                <div
+                  class="flex items-center justify-between gap-4 mt-7 pt-5 border-t border-gray-100"
+                >
+
+                  <!-- AUTHOR -->
+                  <div class="flex items-center gap-3">
+
+                    <div
+                      class="w-11 h-11 rounded-full text-white flex items-center justify-center text-sm font-semibold gradient-bg shadow-md"
+                    >
+                      <%= blog.author?.name?.charAt(0) || "A" %>
+                    </div>
+
+                    <div class="h-fit my-auto">
+
+                      <p
+                        class="text-sm font-semibold text-gray-800"
+                      >
+                        <%= blog.author?.name || "Admin" %>
+                      </p>
+
+                      <time
+                        datetime="<%= new Date(blog.createdAt).toISOString() %>"
+                        class="text-xs text-gray-500"
+                      >
+                        <%= new Date(blog.createdAt).toDateString() %>
+                      </time>
+
+                    </div>
+
+                  </div>
+
+                  <!-- READ -->
+                  <a
+                    href="/blogs/<%= blog.slug %>"
+                    class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-600 hover:text-cyan-700 transition-all duration-300"
+                  >
+                    Read More
+
+                    <span
+                      class="group-hover:translate-x-1 transition-transform duration-300"
+                    >
+                      →
+                    </span>
+
+                  </a>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          <% }) %>
+
+        </div>
+
+        <!-- PAGINATION -->
+        <% if(totalPages > 1) { %>
+
+          <div
+            class="flex flex-wrap items-center justify-center gap-3 mt-16"
+          >
+
+            <!-- PREV -->
+            <% if(currentPage > 1) { %>
+
+              <a
+                href="?page=<%= currentPage - 1 %>"
+                class="px-6 py-3 rounded-2xl bg-white shadow-sm hover:shadow-lg transition-all duration-300 text-gray-700 hover:-translate-y-1"
+              >
+                ← Previous
+              </a>
+
+            <% } %>
+
+            <!-- PAGE NUMBERS -->
+            <% for(let i = 1; i <= totalPages; i++) { %>
+
+              <a
+                href="?page=<%= i %>"
+                class="
+                  w-12 h-12 rounded-2xl flex items-center justify-center font-semibold transition-all duration-300
+                  <%= currentPage === i
+                    ? 'gradient-bg text-white shadow-xl scale-110'
+                    : 'bg-white text-gray-700 hover:shadow-md hover:-translate-y-1'
+                  %>
+                "
+              >
+                <%= i %>
+              </a>
+
+            <% } %>
+
+            <!-- NEXT -->
+            <% if(currentPage < totalPages) { %>
+
+              <a
+                href="?page=<%= currentPage + 1 %>"
+                class="px-6 py-3 rounded-2xl bg-white shadow-sm hover:shadow-lg transition-all duration-300 text-gray-700 hover:-translate-y-1"
+              >
+                Next →
+              </a>
+
+            <% } %>
+
+          </div>
+
+        <% } %>
+
+      <% } else { %>
+
+        <!-- EMPTY STATE -->
+        <section
+          class="min-h-[60vh] flex items-center justify-center"
+        >
+
+          <div
+            class="max-w-xl w-full bg-white rounded-[32px] shadow-lg p-10 text-center"
+          >
+
+            <div
+              class="w-24 h-24 mx-auto rounded-full gradient-bg text-white flex items-center justify-center text-5xl mb-6 shadow-lg"
+            >
+              📰
+            </div>
+
+            <h2
+              class="text-3xl font-bold text-gray-900 mb-4"
+            >
+              No Blogs Found
+            </h2>
+
+            <p
+              class="text-gray-600 leading-8 mb-8"
+            >
+              There are currently no blogs available for this section.
+              Please check back later for new articles and updates.
+            </p>
+
+            <a
+              href="/blogs"
+              class="inline-flex items-center justify-center px-7 py-3 rounded-2xl text-white font-medium transition-all duration-300 gradient-bg shadow-lg hover:scale-105"
+            >
+              Explore Blogs
+            </a>
+
+          </div>
+
+        </section>
+
+      <% } %>
+
+    </main>
+
+    <%- include("../../partials/web/footer") %>
+
+  </body>
+</html>
